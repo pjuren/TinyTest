@@ -2,9 +2,17 @@
 #include <string>
 #include <vector>
 
+/******************************************************************************
+ **       Classes for definition, and automagic detection of test cases      **
+ ******************************************************************************/
+
+/**
+ * \brief TODO
+ */
 class TestCase {
 	public:
   	TestCase (const std::string& testName) : testName(testName) {;}
+  	virtual ~TestCase();
 
     virtual std::string getTestName() const {return testName;}
     virtual void runTest() const = 0;
@@ -13,6 +21,9 @@ class TestCase {
     std::string testName;
 };
 
+/**
+ * \brief TODO
+ */
 class TestSet {
 	public:
 		static TestSet& getTestSet() {
@@ -37,7 +48,9 @@ class TestSet {
     ~TestSet()  {;}
 };
 
-
+/**
+ * \brief TODO
+ */
 class TestCaseAdder {
 	public:
   	TestCaseAdder(const TestCase* b) {
@@ -47,6 +60,9 @@ class TestCaseAdder {
     ~TestCaseAdder() { }
 };
 
+/******************************************************************************
+ **                   Macros for test case definition                        **
+ ******************************************************************************/
 
 #define TEST(NAME)                                                    \
 	class NAME : public TestCase {                                      \
@@ -58,4 +74,8 @@ class TestCaseAdder {
   };                                                                  \
   TestCaseAdder NAME::adder(new NAME(#NAME));                         \
   void NAME::runTest() const
+
+/******************************************************************************
+ **               Macros for testing conditions in test cases                **
+ ******************************************************************************/
 
