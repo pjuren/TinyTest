@@ -9,7 +9,8 @@ using std::endl;
 
 int 
 main(int argc, const char* argv[]) {
-	cerr << "running tests " << endl;
-  TestSet::getTestSet().run();
+	cerr << "RUNNING UNIT TESTS" << endl;
+  if (!TestSet::getTestSet().run()) return EXIT_FAILURE;
+  return EXIT_SUCCESS;
 }
 

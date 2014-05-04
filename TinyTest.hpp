@@ -1,6 +1,27 @@
+#include <exception>
 #include <iostream>
 #include <string>
 #include <vector>
+
+/******************************************************************************
+ **        Classes and macros for testing conditions in test cases           **
+ ******************************************************************************/
+
+class TinyTestException : public std::exception {
+public :
+  TinyTestException() : msg("") {};
+  TinyTestException(std::string msg) : msg(msg) {};
+  virtual ~TinyTestException() throw() {};
+  const char* what() const throw () { return msg.c_str(); }
+private:
+  std::string msg;
+};
+
+#define EXPECT_EQUAL(A,B)                   \
+  if (A != B) throw TinyTestException()     \
+
+#define EXPECT_NOT_EQUAL(A,B)               \
+  if (A == B) throw TinyTestException()     \
 
 /******************************************************************************
  **       Classes for definition, and automagic detection of test cases      **
@@ -12,7 +33,7 @@
 class TestCase {
 	public:
   	TestCase (const std::string& testName) : testName(testName) {;}
-  	virtual ~TestCase();
+  	virtual ~TestCase() {};
 
     virtual std::string getTestName() const {return testName;}
     virtual void runTest() const = 0;
@@ -33,13 +54,22 @@ class TestSet {
 
     void addTest(const TestCase* b) {
 			tests.push_back(b);
-    	std::cout << "adding test " << b->getTestName() << std::endl;
+    	std::cout << "Discovered test: " << b->getTestName() << std::endl;
     }
 
-		void run() {
+		bool run() {
+		  bool okay = true;
 			for (size_t i = 0; i < tests.size(); ++i) {
-				tests[i]->runTest();
+			  std::cout << tests[i]->getTestName() << " ... ";
+			  try {
+			    tests[i]->runTest();
+			    std::cout << " [PASSED]" << std::endl;
+			  } catch (TinyTestException e) {
+			    std::cout << "[FAILED]" << std::endl;
+			    okay = false;
+			  }
 			}
+			return okay;
 		}
 
 	private:
@@ -74,8 +104,4 @@ class TestCaseAdder {
   };                                                                  \
   TestCaseAdder NAME::adder(new NAME(#NAME));                         \
   void NAME::runTest() const
-
-/******************************************************************************
- **               Macros for testing conditions in test cases                **
- ******************************************************************************/
 
