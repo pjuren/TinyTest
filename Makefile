@@ -23,7 +23,13 @@ endif
 all : test
 
 test: TestTinyTest
-	./TestTinyTest
+	@TMPF=`mktemp -t tmpOut`; ./TestTinyTest > $${TMPF}; \
+	diff $${TMPF} regressionTestExpectedOutput.txt > /dev/null; \
+	if [ $$? -ne 0 ]; then \
+		echo "TinyTest build failed regression test!"; \
+		exit 1;\
+	fi;\
+	echo "TinyTest build passed regression test!"
 .PHONY: test
 
 TestTinyTest : TinyTest.cpp TestTinyTest.cpp 

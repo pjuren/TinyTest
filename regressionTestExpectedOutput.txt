@@ -1,0 +1,9 @@
+Discovered test: testEqualityMacro
+Discovered test: testInequalityMacro
+Discovered test: testEqualityMacroFail
+Discovered test: testInequalityMacroFail
+RUNNING UNIT TESTS
+testEqualityMacro ...       [PASSED]
+testInequalityMacro ...     [PASSED]
+testEqualityMacroFail ...   [FAILED]
+testInequalityMacroFail ... [FAILED]

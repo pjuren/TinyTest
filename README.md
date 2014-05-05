@@ -37,12 +37,70 @@ everything you need too.
 What can TinyTest do?
 ---------------------
 
-TODO
+I based TinyTest on my use of Google Test, so I've tried to reproduce the 
+features of that package that I liked. This initial release contains just the 
+basics. More may come later as and when I find it useful to add them. TinyTest 
+supports automatic test detection. You don't need to register any tests, as 
+long as you use the included macros to define the tests (see below).
+
+TinyTest also contains a set of macros for testing the values computed by 
+your unit tests. This release contains the following macros:
+
+EXPECT_EQUAL(A,B)     -- Test whether two values are exactly identical. Typical 
+                         usage would be EXPECT_EQUAL(someFunction(), 5), where 
+                         someFunction computes a value (integer, probably) and 
+                         you expect it to compute the value 5 on this call.
+EXPECT_NOT_EQUAL(A,B) -- Same as EXPECT_EQUAL really, except that it fails if
+                         the values are exactly equal and passes if they are 
+                         not.
+EXPECT_NEAR(A,B,TOL)  -- Useful for comparing floating point numbers, where 
+                         A and B are considered equal if the difference 
+                         between them does not exceed TOL.
+EXPECT_NEAR(A,B)      -- Same as EXPECT_NEAR(A,B,TOL), but with a default 
+                         value for TOL (presently 1e-20; in future I may 
+                         provide a mechanism for changing this, but for now it 
+                         is fixed). 
 
 How do I use TinyTest?
 ----------------------
 
-TODO
+It's pretty easy. All you need to do is include the files TinyTest.cpp and 
+TinyTest.hpp in your project (usually I just include the whole directory,
+but really just those two files are needed). To write a test set, you make 
+a file something like myTests.cpp. In this, you must #include TinyTest.hpp
+(and whatever else you need to run your code). Then you write your tests like
+this (in myTests.cpp):
+
+TEST(myTest) {
+  // whatever code you need here for your test
+  
+  // check the compute values match what you expect
+  EXPECT_EQUAL(1,1);
+  EXPECT_NOT_EQUAL(0,1);
+}
+
+You define as many of these as you want. You don't need any other code, 
+TinyTest will automatically find your tests, run each one and print the 
+result (pass or fail) to stdout. 
+
+To build your test do something like this:
+
+> g++ -o myTests myTests.cpp /path/to/TinyTest/TinyTest.cpp -I/path/to/TinyTest/
+
+Now run your tests like this
+
+./myNewTest
+
+I tend to automate this process in my projects by adding it to the Makefile as 
+the target 'test'. If you want an example, take a look at the file 
+TestTinyTest.cpp included in the distribution. This just runs a set of simple
+tests using TinyTest, some of which are expected to pass, some of which are
+expeted to fail. In the included Makefile, I build and run these tests then 
+compare the output to what I expect (when 'make test' is execute). Actually, 
+that's a regression test, you would normally only include tests you expect to 
+pass, but since I wanted to check that tests fail when they should, I have 
+done so here. It's still a good example of how to write and compile a simple 
+test suite.  
 
 Contacts and bug reports
 ------------------------
