@@ -48,11 +48,11 @@ your unit tests. This release contains the following macros:
 
 Macro                  | Description 
 ---------------------  |   ----------------------------------------------------
-EXPECT_EQUAL(A,B)      | Test whether two values are exactly identical. Typical 
-                         usage would be EXPECT_EQUAL(someFunction(), 5), where 
-                         someFunction computes a value (integer, probably) and 
-                         you expect it to compute the value 5 on this call.
-EXPECT_NOT_EQUAL(A,B)  | Same as EXPECT_EQUAL really, except that it fails if
+EXPECT_EQUAL(A,B)      | Test whether two values are exactly identical. Typical\ 
+                         usage would be EXPECT_EQUAL(someFunction(), 5), where \
+                         someFunction computes a value (integer, probably) and \
+                         you expect it to compute the value 5 on this call.    
+EXPECT_NOT_EQUAL(A,B)  | Same as EXPECT_EQUAL really, except that it fails if  
                          the values are exactly equal and passes if they are 
                          not.
 EXPECT_NEAR(A,B,TOL)   | Useful for comparing floating point numbers, where 
