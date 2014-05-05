@@ -24,6 +24,7 @@
 #include <string>
 #include <vector>
 #include <cassert>
+#include <cmath>
 
 /******************************************************************************
  **        Classes and macros for testing conditions in test cases           **
@@ -53,6 +54,18 @@ private:
  */
 #define EXPECT_NOT_EQUAL(A,B)               \
   if (A == B) throw TinyTestException()     \
+
+/**
+ * \brief TODO
+ */
+#define EXPECT_NEAR(A,B,TOL)                                \
+  if (std::fabs(A - B) > TOL) throw TinyTestException()     \
+
+/**
+ * \brief TODO
+ */
+#define EXPECT_NEAR_DEF(A,B)                               \
+  if (std::fabs(A - B) > 1e-20) throw TinyTestException()  \
 
 /******************************************************************************
  **       Classes for definition, and automagic detection of test cases      **
