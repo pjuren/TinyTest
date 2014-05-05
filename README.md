@@ -46,22 +46,25 @@ long as you use the included macros to define the tests (see below).
 TinyTest also contains a set of macros for testing the values computed by 
 your unit tests. This release contains the following macros:
 
-Macro                  | Description 
----------------------  |   ----------------------------------------------------
-EXPECT_EQUAL(A,B)      | Test whether two values are exactly identical. Typical\ 
-                         usage would be EXPECT_EQUAL(someFunction(), 5), where \
-                         someFunction computes a value (integer, probably) and \
-                         you expect it to compute the value 5 on this call.    
-EXPECT_NOT_EQUAL(A,B)  | Same as EXPECT_EQUAL really, except that it fails if  
-                         the values are exactly equal and passes if they are 
-                         not.
-EXPECT_NEAR(A,B,TOL)   | Useful for comparing floating point numbers, where 
-                         A and B are considered equal if the difference 
-                         between them does not exceed TOL.
-EXPECT_NEAR(A,B)       | Same as EXPECT_NEAR(A,B,TOL), but with a default 
-                         value for TOL (presently 1e-20; in future I may 
-                         provide a mechanism for changing this, but for now it 
-                         is fixed). 
+
+
+#### EXPECT_EQUAL(A,B) ####
+Test whether two values are exactly identical. Typical usage would be 
+EXPECT_EQUAL(someFunction(), 5), where someFunction computes a value (integer,
+probably) and you expect it to compute the value 5 on this call.
+    
+#### EXPECT_NOT_EQUAL(A,B) ####  
+Same as EXPECT_EQUAL really, except that it fails if the values are exactly 
+equal and passes if they are not.
+
+#### EXPECT_NEAR(A,B,TOL) ####  
+Useful for comparing floating point numbers, where A and B are considered 
+equal if the difference between them does not exceed TOL.
+
+#### EXPECT_NEAR(A,B) ####       
+Same as EXPECT_NEAR(A,B,TOL), but with a default value for TOL (presently 
+1e-20; in future I may provide a mechanism for changing this, but for now it 
+is fixed). 
 
 How do I use TinyTest?
 ----------------------
@@ -73,13 +76,13 @@ a file something like myTests.cpp. In this, you must #include TinyTest.hpp
 (and whatever else you need to run your code). Then you write your tests like
 this (in myTests.cpp):
 
-TEST(myTest) {
-  // whatever code you need here for your test
+  TEST(myTest) {
+    // whatever code you need here for your test
   
-  // check the compute values match what you expect
-  EXPECT_EQUAL(1,1);
-  EXPECT_NOT_EQUAL(0,1);
-}
+    // check the compute values match what you expect
+    EXPECT_EQUAL(1,1);
+    EXPECT_NOT_EQUAL(0,1);
+  }
 
 You define as many of these as you want. You don't need any other code, 
 TinyTest will automatically find your tests, run each one and print the 
@@ -91,7 +94,7 @@ To build your test do something like this:
 
 Now run your tests like this
 
-./myNewTest
+> ./myNewTest
 
 I tend to automate this process in my projects by adding it to the Makefile as 
 the target 'test'. If you want an example, take a look at the file 
