@@ -61,7 +61,7 @@ your unit tests. This release contains the following macros:
                              where A and B are considered equal if the 
                              difference between them does not exceed TOL.
 
-**EXPECT_NEAR(A,B)**         Same as EXPECT_NEAR(A,B,TOL), but with a default 
+**EXPECT_NEAR_DEF(A,B)**     Same as EXPECT_NEAR(A,B,TOL), but with a default 
                              value for TOL (presently 1e-20; in future I may 
                              provide a mechanism for changing this, but for 
                              now it is fixed). 
