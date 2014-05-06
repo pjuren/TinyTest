@@ -40,7 +40,7 @@ endif
 all : test
 
 test: TestTinyTest
-	@TMPF=`mktemp -t tmpOut`; ./TestTinyTest > $${TMPF}; \
+	@TMPF=`mktemp -t tmpOutXXXX`; ./TestTinyTest > $${TMPF}; \
 	diff $${TMPF} regressionTestExpectedOutput.txt > /dev/null; \
 	if [ $$? -ne 0 ]; then \
 		echo "TinyTest build failed regression test!"; \
