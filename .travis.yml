@@ -19,7 +19,7 @@ after_success:
   - git config user.name "${GIT_NAME}"
   - git config user.email ${GIT_EMAIL}
   - git config credential.helper "store --file=.git/credentials"
-  - echo https://${GH_TOKEN}:@github.com >> .git/credentials
+  - #echo https://${GH_TOKEN}:@github.com >> .git/credentials
   -
   - # now we make the directory for the docs and cd into it
   - mkdir developmentDocs
@@ -38,5 +38,5 @@ after_success:
   - cd developmentDocs
   - git add --all .
   - git commit -m "Auto-updating Doxygen developer documentation"
-  - git push origin gh-pages
+  - git push https://${GH_TOKEN}@github.com/pjuren/TinyTest gh-pages
 
