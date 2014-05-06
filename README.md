@@ -7,7 +7,7 @@ What is TinyTest?
 TinyTest is a light-weight unit testing framework for C++ projects. You can 
 find the development documentation at http://pjuren.github.io/TinyTest/ 
 
-The project's current build status is
+The project's current build status is:  
 [![Build Status](https://travis-ci.org/pjuren/TinyTest.svg?branch=master)](https://travis-ci.org/pjuren/TinyTest)
 
 These days, the software I write is generally command-line applications for use
@@ -20,7 +20,7 @@ code and check that the result matches some pre-computed expected value (to some
 tolerance). I generally like to include these unit tests with the distribution 
 of the software I write. There are a couple of advantages to doing this: (1) 
 keeping the tests bundled with the software project means they are easily 
-updated when changes are made; (2) it means the distirbuton can easily be 
+updated when changes are made; (2) it means the distributon can easily be 
 tested on the target platform(s) in exactly the same form that it will be 
 delivered to users; and (3) users can immediately verify that the distribution 
 works for them. I don't think this is confusing or onerous for the user because 

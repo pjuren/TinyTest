@@ -81,7 +81,9 @@ private:
   if (std::fabs(A - B) > TOL) throw TinyTestException()     \
 
 /**
- * \brief TODO
+ * \brief This macro tests whether A and B are _almost_ equal. The
+ *        subtraction operator must be defined, and a default tolerance of
+ *        1e-20 is allowed. Basically, this is for floating point numbers.
  */
 #define EXPECT_NEAR_DEF(A,B)                               \
   if (std::fabs(A - B) > 1e-20) throw TinyTestException()  \
@@ -91,7 +93,9 @@ private:
  ******************************************************************************/
 
 /**
- * \brief TODO
+ * \brief This class is the base test case class. User defined test cases
+ *        will extend this class (though they won't know it necessarily,
+ *        since it's done automatically for them using a macro).
  */
 class TestCase {
 	public:
