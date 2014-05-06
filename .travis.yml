@@ -6,3 +6,12 @@ script: make
 env:
   global:
     - secure: "S9W0kw0CCEaDO0Eu9kFrguhEkeuyP7Vm5GZCvCLCrB2DtDa68/0VW5WuZTzoLqIDMOpHEzHhXDgcFLm65KGwnRvjkRlr6Lgp5kD4Y6ZmZf8pLHR7XriRYkWjc/brJCbBjj1570Qao2zDZzhJHDiiAm0ybJHuUqcG0USGcqGqZU0="
+after_success:
+  - ## the following automatically builds the doxygen 
+  - ## documentation and pushes it to the gh_pages branch 
+  - 
+  - # First, set up credentials using the environment variables 
+  - # GIT_NAME, GIT_EMAIL and GH_TOKEN. These were passed
+  - # encrypted to travis and should have been decrypted 
+  - # using travis' private key before this script was run.
+
