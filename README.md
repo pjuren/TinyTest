@@ -4,7 +4,11 @@ TinyTest V0.1b
 What is TinyTest?
 -----------------
 
-TinyTest is a light-weight unit testing framework for C++ projects. 
+TinyTest is a light-weight unit testing framework for C++ projects. You can 
+find the development documentation at http://pjuren.github.io/TinyTest/ 
+
+The project's current build status is
+[![Build Status](https://travis-ci.org/pjuren/TinyTest.svg?branch=master)](https://travis-ci.org/pjuren/TinyTest)
 
 These days, the software I write is generally command-line applications for use
 in Unix-like environments. Generally these programs are light-weight. In the 
