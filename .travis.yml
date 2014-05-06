@@ -16,9 +16,9 @@ after_success:
   - # GIT_NAME, GIT_EMAIL and GH_TOKEN. These were passed
   - # encrypted to travis and should have been decrypted 
   - # using travis' private key before this script was run.
-  - git config user.name "${GIT_NAME}"
-  - git config user.email ${GIT_EMAIL}
-  - git config credential.helper "store --file=.git/credentials"
+  - git config --global user.name "${GIT_NAME}"
+  - git config --global user.email ${GIT_EMAIL}
+  - #git config credential.helper "store --file=.git/credentials"
   - #echo https://${GH_TOKEN}:@github.com >> .git/credentials
   -
   - # now we make the directory for the docs and cd into it
