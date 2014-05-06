@@ -3,3 +3,6 @@ compiler:
   - gcc
   - clang
 script: make 
+env:
+  global:
+    - secure: "S9W0kw0CCEaDO0Eu9kFrguhEkeuyP7Vm5GZCvCLCrB2DtDa68/0VW5WuZTzoLqIDMOpHEzHhXDgcFLm65KGwnRvjkRlr6Lgp5kD4Y6ZmZf8pLHR7XriRYkWjc/brJCbBjj1570Qao2zDZzhJHDiiAm0ybJHuUqcG0USGcqGqZU0="
