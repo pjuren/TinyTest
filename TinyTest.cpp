@@ -27,6 +27,7 @@
 // STL includes
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 // TinyTest includes
 #include "TinyTest.hpp"
