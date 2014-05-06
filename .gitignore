@@ -25,3 +25,7 @@ TestTinyTest
 # Eclipse project files
 .cproject
 .project
+
+# the development documentation
+/developmentDocs
+

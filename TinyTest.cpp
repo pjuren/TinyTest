@@ -1,5 +1,11 @@
 /**
- * TinyTest
+ * \file  TinyTest.cpp
+ * \brief This is the driver for TinyTest. You should link this with your tests
+ *        and it will discover and run all of them.
+ *
+ * \authors Philip J. Uren
+ *
+ * \section copyright Copyright Details
  * Copyright (C) 2014 Philip J. Uren
  *
  * This library is free software; you can redistribute it and/or
@@ -30,9 +36,10 @@ using std::cout;
 using std::endl;
 
 /**
- * \brief TODO
- * \param argc TODO
- * \param argv TODO
+ * \brief A main function that will run all of the tests that TinyTest has
+ *        discovered in any object files that are linked with this.
+ * \param argc Number of command line arguments. This is ignored.
+ * \param argv Command line arguments as c-strings. This is ignored.
  */
 int 
 main(int argc, const char* argv[]) {

@@ -52,6 +52,10 @@ test: TestTinyTest
 TestTinyTest : TinyTest.cpp TestTinyTest.cpp 
 	$(CXX) $(CFLAGS) -o $@ $^ $(INCLUDEARGS) $(LIBS) 
 
+developmentDocs:
+	@doxygen doxygen.config
+.PHONY: developmentDocs 
+
 clean:
 	@-rm -f TestTinyTest *.o *.so *.a *~
 	@-rm -rf *.dSYM
