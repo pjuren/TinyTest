@@ -6,6 +6,11 @@ Discovered test: testEqualityMacroFail
 Discovered test: testInequalityMacroFail
 Discovered test: testNearFail
 Discovered test: testNearTolFail
+Discovered test: testContainerEqualPass
+Discovered test: testContainerEqualFail
+Discovered test: testContainerEqualFail2
+Discovered test: testContainerNearPass
+Discovered test: testContainerNearFail
 RUNNING UNIT TESTS
 testEqualityMacroSuccess ...   [PASSED]
 testInequalityMacroSuccess ... [PASSED]
@@ -15,3 +20,8 @@ testEqualityMacroFail ...      [FAILED]
 testInequalityMacroFail ...    [FAILED]
 testNearFail ...               [FAILED]
 testNearTolFail ...            [FAILED]
+testContainerEqualPass ...     [PASSED]
+testContainerEqualFail ...     [FAILED]
+testContainerEqualFail2 ...    [FAILED]
+testContainerNearPass ...      [PASSED]
+testContainerNearFail ...      [FAILED]

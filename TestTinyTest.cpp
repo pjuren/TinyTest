@@ -30,6 +30,7 @@
 
 #include "TinyTest.hpp"
 #include <iostream>
+#include <vector>
 
 using std::cerr;
 using std::endl;
@@ -112,4 +113,76 @@ TEST(testNearTolFail) {
   // the default tolerance of 1e-20, but it should fail here
   // because increase that threshold
   EXPECT_NEAR(0, 1e-30, 1e-31);
+}
+
+/**
+ * \brief Test the container equality macro on two vectors of int.
+ */
+TEST(testContainerEqualPass) {
+  std::vector<int> one;
+  std::vector<int> two;
+  one.push_back(1); two.push_back(1);
+  one.push_back(3); two.push_back(3);
+  one.push_back(2); two.push_back(2);
+  one.push_back(6); two.push_back(6);
+  EXPECT_EQUAL_STL_CONTAINER(one, two);
+}
+
+/**
+ * \brief Test the container equality macros fails when two vectors have
+ *        different length.
+ */
+TEST(testContainerEqualFail) {
+  // if you look at the macro, you'll see that it iterates over the length
+  // of the first vector, so let's just make sure the initial test on size is
+  // okay.
+  std::vector<int> one;
+  std::vector<int> two;
+  one.push_back(1); two.push_back(1);
+  one.push_back(3); two.push_back(3);
+  one.push_back(2); two.push_back(2);
+                    two.push_back(6);
+  EXPECT_EQUAL_STL_CONTAINER(one, two);
+}
+
+/**
+ * \brief Test the container equality macro fails when two vectors have the
+ *        same length, but not equal contents.
+ */
+TEST(testContainerEqualFail2) {
+  std::vector<int> one;
+  std::vector<int> two;
+  one.push_back(1); two.push_back(1);
+  one.push_back(3); two.push_back(3);
+  one.push_back(2); two.push_back(6);
+  EXPECT_EQUAL_STL_CONTAINER(one, two);
+}
+
+/**
+ * \brief Test the container 'near equal' macro passes with two vectors of
+ *        doubles that are close to equal.
+ */
+TEST(testContainerNearPass) {
+  std::vector<double> one;
+  std::vector<double> two;
+  one.push_back(1.0); two.push_back(1.001);
+  one.push_back(3.0); two.push_back(2.999);
+  one.push_back(2.0); two.push_back(2.000);
+  one.push_back(6.0); two.push_back(5.991);
+  EXPECT_NEAR_STL_CONTAINER(one, two, 0.01)
+}
+
+/**
+ * \brief Test the container 'near equal' macro fails with two vectors of
+ *        doubles that are close to equal, but don't meet the tolerance
+ *        threshold.
+ */
+TEST(testContainerNearFail) {
+  std::vector<double> one;
+  std::vector<double> two;
+  one.push_back(1.0); two.push_back(1.001);
+  one.push_back(3.0); two.push_back(2.999);
+  one.push_back(2.0); two.push_back(2.000);
+  one.push_back(6.0); two.push_back(5.991);
+  EXPECT_NEAR_STL_CONTAINER(one, two, 0.001)
 }

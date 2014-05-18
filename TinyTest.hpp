@@ -42,31 +42,74 @@
  ******************************************************************************/
 
 /**
- * \brief TODO
+ * \brief Exceptions of this type are thrown whenever a test fails.
  */
 class TinyTestException : public std::exception {
 public :
-  /** \brief TODO */
+  /** \brief default constructor makes a TinyTestException with no message */
   TinyTestException() : msg("") {};
 
-  /** \brief TODO */
+  /** \brief construct a TinyTestException with the given failure message */
   TinyTestException(std::string msg) : msg(msg) {};
 
-  /** brief TODO */
+  /** brief default destructor */
   virtual ~TinyTestException() throw() {};
 
-  /** brief TODO */
+  /** brief get the failure message for this TinyTestException */
   const char* what() const throw () { return msg.c_str(); }
 private:
-  /** brief TODO */
+  /** brief A message containing (optionally) extra detail about what failed */
   std::string msg;
 };
 
 /**
- * \brief TODO
+ * \brief Test whether two variables A and B are exactly equal. Throw a
+ *        TinyTestException if they aren't.
+ *
+ *        The types of A and B must support !=, but they need not be the same
+ *        type.
  */
 #define EXPECT_EQUAL(A,B)                   \
   if (A != B) throw TinyTestException()     \
+
+/**
+ * \brief Test whether two random-access containers A and B are equal. Throw a
+ *        TinyTestException if they aren't.
+ *
+ *        This will work for any containers where .size() and random access
+ *        via [] is defined (things like vector, for example). Additionally,
+ *        the types in A and B must support !=, though they needn't necessarily
+ *        be the same type.
+ *
+ *        A and B are equal if they contain the same number of items and each
+ *        pairwise element comparison with != evaluates to false.
+ */
+#define EXPECT_EQUAL_STL_CONTAINER(A,B)                 \
+  if (A.size() != B.size()) throw TinyTestException();  \
+  for (size_t i = 0; i < A.size(); ++i) {               \
+    if (A[i] != B[i]) throw TinyTestException();        \
+  }
+
+/**
+ * \brief Test whether two random-access containers A and B contain elements
+ *        that are approximately equal (within some specified tolerance).
+ *        Throw a TinyTestException if they don't.
+ *
+ *        This will work for any containers where .size() and random access
+ *        via [] is defined (things like vector, for example). Additionally,
+ *        the types in A and B must support the subtraction operator resulting
+ *        in a type compatible with std::fabs, though they needn't necessarily
+ *        be the same type. This works well for things like doubles and floats
+ *
+ *        A and B are 'near equal' if they contain the same number of items and
+ *        the difference between pairwise elements (evaluated by the - operator)
+ *        is within the specified tolerance.
+ */
+#define EXPECT_NEAR_STL_CONTAINER(A,B,TOL)                              \
+  if (A.size() != B.size()) throw TinyTestException();                  \
+  for (size_t i = 0; i < A.size(); ++i) {                               \
+    if (std::fabs(A[i] - B[i]) > TOL) throw TinyTestException();        \
+  }
 
 /**
  * \brief TODO
@@ -75,7 +118,9 @@ private:
   if (A == B) throw TinyTestException()     \
 
 /**
- * \brief TODO
+ * \brief This macro tests whether A and B are _almost_ equal. The
+ *        subtraction operator must be defined, and a tolerance can be specified
+ *        by the caller. Basically, this is for floating point numbers.
  */
 #define EXPECT_NEAR(A,B,TOL)                                \
   if (std::fabs(A - B) > TOL) throw TinyTestException()     \
