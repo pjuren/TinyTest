@@ -97,15 +97,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00043"></a>00043 
 <a name="l00047"></a><a class="code" href="class_tiny_test_exception.html">00047</a> <span class="keyword">class </span><a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> : <span class="keyword">public</span> std::exception {
 <a name="l00048"></a>00048 <span class="keyword">public</span> :
-<a name="l00050"></a><a class="code" href="class_tiny_test_exception.html#aa82eb82465da31baa1b4658f2e81bdb6">00050</a>   <a class="code" href="class_tiny_test_exception.html#aa82eb82465da31baa1b4658f2e81bdb6" title="default constructor makes a TinyTestException with no message">TinyTestException</a>() : <a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b">msg</a>(<span class="stringliteral">&quot;&quot;</span>) {};
+<a name="l00050"></a><a class="code" href="class_tiny_test_exception.html#aa82eb82465da31baa1b4658f2e81bdb6">00050</a>   <a class="code" href="class_tiny_test_exception.html#aa82eb82465da31baa1b4658f2e81bdb6" title="default constructor makes a TinyTestException with no message">TinyTestException</a>() : <a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b" title="A message containing (optionally) extra detail about what failed.">msg</a>(<span class="stringliteral">&quot;&quot;</span>) {};
 <a name="l00051"></a>00051 
-<a name="l00053"></a><a class="code" href="class_tiny_test_exception.html#a9b84c9d8dc09079a0a7bd310492abb8c">00053</a>   <a class="code" href="class_tiny_test_exception.html#a9b84c9d8dc09079a0a7bd310492abb8c" title="construct a TinyTestException with the given failure message">TinyTestException</a>(std::string <a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b">msg</a>) : msg(msg) {};
+<a name="l00053"></a><a class="code" href="class_tiny_test_exception.html#a9b84c9d8dc09079a0a7bd310492abb8c">00053</a>   <a class="code" href="class_tiny_test_exception.html#a9b84c9d8dc09079a0a7bd310492abb8c" title="construct a TinyTestException with the given failure message">TinyTestException</a>(std::string <a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b" title="A message containing (optionally) extra detail about what failed.">msg</a>) : msg(msg) {};
 <a name="l00054"></a>00054 
-<a name="l00056"></a><a class="code" href="class_tiny_test_exception.html#a5d0bb2a27321067f663055cdd908b8b1">00056</a>   <span class="keyword">virtual</span> <a class="code" href="class_tiny_test_exception.html#a5d0bb2a27321067f663055cdd908b8b1">~TinyTestException</a>() throw() {};
+<a name="l00056"></a><a class="code" href="class_tiny_test_exception.html#a5d0bb2a27321067f663055cdd908b8b1">00056</a>   <span class="keyword">virtual</span> <a class="code" href="class_tiny_test_exception.html#a5d0bb2a27321067f663055cdd908b8b1" title="default destructor">~TinyTestException</a>() throw() {};
 <a name="l00057"></a>00057 
-<a name="l00059"></a><a class="code" href="class_tiny_test_exception.html#a9faf77f8f0b4618f4d4547492279118d">00059</a>   <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="class_tiny_test_exception.html#a9faf77f8f0b4618f4d4547492279118d">what</a>() <span class="keyword">const</span> throw () { <span class="keywordflow">return</span> <a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b">msg</a>.c_str(); }
+<a name="l00059"></a><a class="code" href="class_tiny_test_exception.html#a9faf77f8f0b4618f4d4547492279118d">00059</a>   <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="class_tiny_test_exception.html#a9faf77f8f0b4618f4d4547492279118d" title="get the failure message for this TinyTestException">what</a>() <span class="keyword">const</span> throw () { <span class="keywordflow">return</span> <a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b" title="A message containing (optionally) extra detail about what failed.">msg</a>.c_str(); }
 <a name="l00060"></a>00060 <span class="keyword">private</span>:
-<a name="l00062"></a><a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b">00062</a>   std::string <a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b">msg</a>;
+<a name="l00062"></a><a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b">00062</a>   std::string <a class="code" href="class_tiny_test_exception.html#aca17a6123b046727a45d239bd697f20b" title="A message containing (optionally) extra detail about what failed.">msg</a>;
 <a name="l00063"></a>00063 };
 <a name="l00064"></a>00064 
 <a name="l00072"></a><a class="code" href="_tiny_test_8hpp.html#a4dd85142e8955bd0b36801f74aad5224">00072</a> <span class="preprocessor">#define EXPECT_EQUAL(A,B)                   \</span>
@@ -212,9 +212,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00245"></a>00245 <span class="comment"> ******************************************************************************/</span>
 <a name="l00246"></a>00246 
 <a name="l00250"></a><a class="code" href="_tiny_test_8hpp.html#a3a8dd86e1cab36109f7149282150152d">00250</a> <span class="preprocessor">#define TEST(NAME)                                                      \</span>
-<a name="l00251"></a>00251 <span class="preprocessor">  class NAME : public TestCase {                                      \</span>
+<a name="l00251"></a>00251 <span class="preprocessor">  class NAME : public TestCase {                                        \</span>
 <a name="l00252"></a>00252 <span class="preprocessor">    public:                                                             \</span>
-<a name="l00253"></a>00253 <span class="preprocessor">      NAME(const std::string&amp; testName) : TestCase( testName ) { ; }  \</span>
+<a name="l00253"></a>00253 <span class="preprocessor">      NAME(const std::string&amp; testName) : TestCase( testName ) { ; }    \</span>
 <a name="l00254"></a>00254 <span class="preprocessor">      virtual void runTest() const;                                     \</span>
 <a name="l00255"></a>00255 <span class="preprocessor">    private:                                                            \</span>
 <a name="l00256"></a>00256 <span class="preprocessor">      static TestCaseAdder adder;                                       \</span>
@@ -241,7 +241,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 18 2014 03:05:40 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 18 2014 03:20:53 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
