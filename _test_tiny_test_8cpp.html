@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_tiny_test_8hpp_source.html">TinyTest.hpp</a>&quot;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -113,6 +114,21 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7febc1c1a173c4bab9856a202972c0a3"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="a7febc1c1a173c4bab9856a202972c0a3" args="(testNearTolFail)" -->
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a7febc1c1a173c4bab9856a202972c0a3">TEST</a> (testNearTolFail)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test that the macro for comparing floating point values that are essentially equal fails when presented with two values that differ by a value greater than a specified threshold (but less than the default tolerance). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc97a14c12945cbb3c40118dc7db54f4"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="acc97a14c12945cbb3c40118dc7db54f4" args="(testContainerEqualPass)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#acc97a14c12945cbb3c40118dc7db54f4">TEST</a> (testContainerEqualPass)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test the container equality macro on two vectors of int. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10c559da5be92f1aa045e9c21624a087"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="a10c559da5be92f1aa045e9c21624a087" args="(testContainerEqualFail)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a10c559da5be92f1aa045e9c21624a087">TEST</a> (testContainerEqualFail)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test the container equality macros fails when two vectors have different length. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abee04af88ceeeb7794f107fe2422e1a0"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="abee04af88ceeeb7794f107fe2422e1a0" args="(testContainerEqualFail2)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#abee04af88ceeeb7794f107fe2422e1a0">TEST</a> (testContainerEqualFail2)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test the container equality macro fails when two vectors have the same length, but not equal contents. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49a31209b3e852d89c15cda470bc9e7c"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="a49a31209b3e852d89c15cda470bc9e7c" args="(testContainerNearPass)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a49a31209b3e852d89c15cda470bc9e7c">TEST</a> (testContainerNearPass)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test the container 'near equal' macro passes with two vectors of doubles that are close to equal. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31ccdc34f8417d5ca707002a52581024"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="a31ccdc34f8417d5ca707002a52581024" args="(testContainerNearFail)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a31ccdc34f8417d5ca707002a52581024">TEST</a> (testContainerNearFail)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test the container 'near equal' macro fails with two vectors of doubles that are close to equal, but don't meet the tolerance threshold. <br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file defines a set of standard tests to run on the comparison macros that come with TinyTest, some of which are expected to succeed and some of which are expected to fail. The results can be compared against the file regressionTestExpectedOutput.txt using diff; this is a rudimentary regression test and is implemented in the included make file as the target 'test'. </p>
@@ -141,7 +157,7 @@ Copyright Details</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 6 2014 04:28:51 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 18 2014 03:05:29 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
