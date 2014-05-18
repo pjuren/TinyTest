@@ -52,13 +52,13 @@ public :
   /** \brief construct a TinyTestException with the given failure message */
   TinyTestException(std::string msg) : msg(msg) {};
 
-  /** brief default destructor */
+  /** \brief default destructor */
   virtual ~TinyTestException() throw() {};
 
-  /** brief get the failure message for this TinyTestException */
+  /** \brief get the failure message for this TinyTestException */
   const char* what() const throw () { return msg.c_str(); }
 private:
-  /** brief A message containing (optionally) extra detail about what failed */
+  /** \brief A message containing (optionally) extra detail about what failed */
   std::string msg;
 };
 
@@ -248,9 +248,9 @@ public:
  * \brief TODO
  */
 #define TEST(NAME)                                                      \
-	class NAME : public TestCase {                                      \
+	class NAME : public TestCase {                                        \
     public:                                                             \
-    	NAME(const std::string& testName) : TestCase( testName ) { ; }  \
+    	NAME(const std::string& testName) : TestCase( testName ) { ; }    \
       virtual void runTest() const;                                     \
     private:                                                            \
       static TestCaseAdder adder;                                       \
