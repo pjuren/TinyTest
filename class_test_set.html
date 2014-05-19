@@ -86,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="TestSet" -->
-<p>TODO.  
+<p>This class defines a Test Set, which is really just a collection of test cases. Uses the factory pattern; objects of this class should not be directly constructed. When one is needed, call <a class="el" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c" title="get a reference to a test set; at present, we maintain only one test set. On the first call...">getTestSet()</a>.  
  <a href="class_test_set.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_tiny_test_8hpp_source.html">TinyTest.hpp</a>&gt;</code></p>
@@ -97,35 +97,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec8f082e5164c81c71c2ec2afce9d914"></a><!-- doxytag: member="TestSet::addTest" ref="aec8f082e5164c81c71c2ec2afce9d914" args="(const TestCase *b)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_set.html#aec8f082e5164c81c71c2ec2afce9d914">addTest</a> (const <a class="el" href="class_test_case.html">TestCase</a> *b)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">add a test case to this test set. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9bd60114542bffb563999a15a0fea43f"></a><!-- doxytag: member="TestSet::run" ref="a9bd60114542bffb563999a15a0fea43f" args="()" -->
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_set.html#a9bd60114542bffb563999a15a0fea43f">run</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">run all of the test cases in this test set and output their name and success/failure to stderr. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73d91e7e126488172e1700871d132d5c"></a><!-- doxytag: member="TestSet::getTestSet" ref="a73d91e7e126488172e1700871d132d5c" args="()" -->
 static <a class="el" href="class_test_set.html">TestSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c">getTestSet</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get a reference to a test set; at present, we maintain only one test set. On the first call, it is constructed. Every subsequent call just returns a reference to the same set. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a093caf5ec42b07292c519b2cf3334043"></a><!-- doxytag: member="TestSet::TestSet" ref="a093caf5ec42b07292c519b2cf3334043" args="()" -->
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_set.html#a093caf5ec42b07292c519b2cf3334043">TestSet</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">make the constructor private; this is a factory class, so we disallow construction from outside. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af88f5d804339ba208dc7655b6a54d39b"></a><!-- doxytag: member="TestSet::~TestSet" ref="af88f5d804339ba208dc7655b6a54d39b" args="()" -->
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_set.html#af88f5d804339ba208dc7655b6a54d39b">~TestSet</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">make the destructor private <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26fee18c7e7154110a3e05c663225db7"></a><!-- doxytag: member="TestSet::maxNameLength" ref="a26fee18c7e7154110a3e05c663225db7" args="() const " -->
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_set.html#a26fee18c7e7154110a3e05c663225db7">maxNameLength</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">what is the length of the name of the test with the longest name <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43dc781d7b2cfa335cb2ccbbce984afa"></a><!-- doxytag: member="TestSet::tests" ref="a43dc781d7b2cfa335cb2ccbbce984afa" args="" -->
-std::vector&lt; const <a class="el" href="class_test_case.html">TestCase</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; const <a class="el" href="class_test_case.html">TestCase</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>TODO. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>This class defines a Test Set, which is really just a collection of test cases. Uses the factory pattern; objects of this class should not be directly constructed. When one is needed, call <a class="el" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c" title="get a reference to a test set; at present, we maintain only one test set. On the first call...">getTestSet()</a>. </p>
+</div><hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a43dc781d7b2cfa335cb2ccbbce984afa"></a><!-- doxytag: member="TestSet::tests" ref="a43dc781d7b2cfa335cb2ccbbce984afa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;const <a class="el" href="class_test_case.html">TestCase</a>*&gt; <a class="el" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">TestSet::tests</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>collection of test cases in this test set; store as pointers to allows run-time polymorphism; user-defined test cases extend <a class="el" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="_tiny_test_8hpp_source.html">TinyTest.hpp</a></li>
 </ul>
 </div><!-- contents -->
@@ -146,7 +159,7 @@ std::vector&lt; const <a class="el" href="class_test_case.html">TestCase</a> * &
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 18 2014 03:20:59 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 19 2014 19:11:20 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

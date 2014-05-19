@@ -101,9 +101,9 @@ Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_case.html">TestCase</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is the base test case class. User defined test cases will extend this class (though they won't know it necessarily, since it's done automatically for them using a macro).  <a href="class_test_case.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_set.html">TestSet</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO.  <a href="class_test_set.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class defines a Test Set, which is really just a collection of test cases. Uses the factory pattern; objects of this class should not be directly constructed. When one is needed, call <a class="el" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c" title="get a reference to a test set; at present, we maintain only one test set. On the first call...">getTestSet()</a>.  <a href="class_test_set.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_case_adder.html">TestCaseAdder</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO.  <a href="class_test_case_adder.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a helper class that facilitates automatic registration of tests. When one of these is constructed, it is given a <a class="el" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a> pointer (in reality, a pointer to an object that is a subclass of <a class="el" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a>), which it registers with a static test set maintained by the <a class="el" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a> class.  <a href="class_test_case_adder.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a4dd85142e8955bd0b36801f74aad5224">EXPECT_EQUAL</a>(A, B)&#160;&#160;&#160;if (A != B) throw <a class="el" href="class_tiny_test_exception.html">TinyTestException</a>()     \</td></tr>
@@ -114,7 +114,7 @@ Defines</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test whether two random-access containers A and B contain elements that are approximately equal (within some specified tolerance). Throw a <a class="el" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> if they don't.  <a href="#a5d109af02a7508cb9521a52b864db7c6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16e4cb037161beddc807347a12cd3d8a"></a><!-- doxytag: member="TinyTest.hpp::EXPECT_NOT_EQUAL" ref="a16e4cb037161beddc807347a12cd3d8a" args="(A, B)" -->
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a16e4cb037161beddc807347a12cd3d8a">EXPECT_NOT_EQUAL</a>(A, B)&#160;&#160;&#160;if (A == B) throw <a class="el" href="class_tiny_test_exception.html">TinyTestException</a>()     \</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macros tests whether A and B are _NOT_ equal. The equality oeprator must be defined for A and B, but they need not be the same type. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbe3b51bf14b9ed6b3a71c1dfc54d07e"></a><!-- doxytag: member="TinyTest.hpp::EXPECT_NEAR" ref="adbe3b51bf14b9ed6b3a71c1dfc54d07e" args="(A, B, TOL)" -->
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#adbe3b51bf14b9ed6b3a71c1dfc54d07e">EXPECT_NEAR</a>(A, B, TOL)&#160;&#160;&#160;if (std::fabs(A - B) &gt; TOL) throw <a class="el" href="class_tiny_test_exception.html">TinyTestException</a>()     \</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro tests whether A and B are _almost_ equal. The subtraction operator must be defined, and a tolerance can be specified by the caller. Basically, this is for floating point numbers. <br/></td></tr>
@@ -122,7 +122,7 @@ Defines</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a085d4cd46707bbe5680a243d96bc8bce">EXPECT_NEAR_DEF</a>(A, B)&#160;&#160;&#160;if (std::fabs(A - B) &gt; 1e-20) throw TinyTestException()  \</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro tests whether A and B are _almost_ equal. The subtraction operator must be defined, and a default tolerance of 1e-20 is allowed. Basically, this is for floating point numbers. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a3a8dd86e1cab36109f7149282150152d">TEST</a>(NAME)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO.  <a href="#a3a8dd86e1cab36109f7149282150152d"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the macro that users will employ to define their tests. Each test they define is a sub-class of <a class="el" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>. We use a little trick here to do automatic test registration. The class has a static member of <a class="el" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a>, which we initialise when the macro is expanded, passing to it an object constructed from the newly defined test case class. The <a class="el" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a> then just registers this object with a static test set maintained by the <a class="el" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a> class.  <a href="#a3a8dd86e1cab36109f7149282150152d"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file contains most of the code for TinyTest, including the macros for test definition and condition checking, the classes for automatic test registration and the exceptions. You should include this file at the top of your test suite. </p>
@@ -257,14 +257,14 @@ Copyright Details</h2>
 <b>Value:</b><div class="fragment"><pre class="fragment"><span class="keyword">class </span>NAME : <span class="keyword">public</span> <a class="code" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a> {                                        \
     public:                                                             \
       NAME(<span class="keyword">const</span> std::string&amp; testName) : <a class="code" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>( testName ) { ; }    \
-      virtual <span class="keywordtype">void</span> <a class="code" href="class_test_case.html#a43b85eb7190586a285dde4f870c20d42" title="TODO.">runTest</a>() <span class="keyword">const</span>;                                     \
+      virtual <span class="keywordtype">void</span> <a class="code" href="class_test_case.html#a43b85eb7190586a285dde4f870c20d42" title="Run the code for this test. If this method completes without throwing any exceptions the test is cons...">runTest</a>() <span class="keyword">const</span>;                                     \
     private:                                                            \
-      static <a class="code" href="class_test_case_adder.html" title="TODO.">TestCaseAdder</a> adder;                                       \
+      static <a class="code" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a> adder;                                       \
   };                                                                    \
   TestCaseAdder NAME::adder(<span class="keyword">new</span> NAME(#NAME));                           \
-  void <a class="code" href="class_test_case.html#a43b85eb7190586a285dde4f870c20d42" title="TODO.">NAME::runTest</a>() const
+  void <a class="code" href="class_test_case.html#a43b85eb7190586a285dde4f870c20d42" title="Run the code for this test. If this method completes without throwing any exceptions the test is cons...">NAME::runTest</a>() const
 </pre></div>
-<p>TODO. </p>
+<p>This is the macro that users will employ to define their tests. Each test they define is a sub-class of <a class="el" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>. We use a little trick here to do automatic test registration. The class has a static member of <a class="el" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a>, which we initialise when the macro is expanded, passing to it an object constructed from the newly defined test case class. The <a class="el" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a> then just registers this object with a static test set maintained by the <a class="el" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a> class. </p>
 
 </div>
 </div>
@@ -286,7 +286,7 @@ Copyright Details</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 18 2014 03:20:59 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 19 2014 19:11:20 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -93,25 +93,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd5614032c8431adf7129c430d47b49d"></a><!-- doxytag: member="TestCase::TestCase" ref="abd5614032c8431adf7129c430d47b49d" args="(const std::string &amp;testName)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_case.html#abd5614032c8431adf7129c430d47b49d">TestCase</a> (const std::string &amp;<a class="el" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">testName</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_case.html#abd5614032c8431adf7129c430d47b49d">TestCase</a> (const std::string &amp;<a class="el" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">testName</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new test case with the given name.  <a href="#abd5614032c8431adf7129c430d47b49d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58f219ba1cddb042028c4d4d24599d9b"></a><!-- doxytag: member="TestCase::~TestCase" ref="a58f219ba1cddb042028c4d4d24599d9b" args="()" -->
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_case.html#a58f219ba1cddb042028c4d4d24599d9b">~TestCase</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test case destructor. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7ef02b75b17615576045bccf5621eaa"></a><!-- doxytag: member="TestCase::getTestName" ref="ac7ef02b75b17615576045bccf5621eaa" args="() const " -->
 virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_case.html#ac7ef02b75b17615576045bccf5621eaa">getTestName</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of this test case. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43b85eb7190586a285dde4f870c20d42"></a><!-- doxytag: member="TestCase::runTest" ref="a43b85eb7190586a285dde4f870c20d42" args="() const =0" -->
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_case.html#a43b85eb7190586a285dde4f870c20d42">runTest</a> () const =0</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO. <br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the code for this test. If this method completes without throwing any exceptions the test is considered to have passed. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">testName</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This class is the base test case class. User defined test cases will extend this class (though they won't know it necessarily, since it's done automatically for them using a macro). </p>
-</div><hr/><h2>Member Data Documentation</h2>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="abd5614032c8431adf7129c430d47b49d"></a><!-- doxytag: member="TestCase::TestCase" ref="abd5614032c8431adf7129c430d47b49d" args="(const std::string &amp;testName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_test_case.html#abd5614032c8431adf7129c430d47b49d">TestCase::TestCase</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>testName</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Construct a new test case with the given name. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">testName</td><td>name of the test case </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Member Data Documentation</h2>
 <a class="anchor" id="a77ac2ae83711a42b57ce599bbc4cb5fe"></a><!-- doxytag: member="TestCase::testName" ref="a77ac2ae83711a42b57ce599bbc4cb5fe" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -147,7 +172,7 @@ Private Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 18 2014 03:20:59 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 19 2014 19:11:20 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
