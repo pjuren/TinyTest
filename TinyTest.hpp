@@ -112,7 +112,9 @@ private:
   }
 
 /**
- * \brief TODO
+ * \brief This macros tests whether A and B are _NOT_ equal. The equality
+ *        oeprator must be defined for A and B, but they need not be the
+ *        same type.
  */
 #define EXPECT_NOT_EQUAL(A,B)               \
   if (A == B) throw TinyTestException()     \
@@ -144,16 +146,20 @@ private:
  */
 class TestCase {
 	public:
-    /** \brief TODO */
+    /** \brief Construct a new test case with the given name
+     *  \param testName name of the test case
+     */
   	TestCase (const std::string& testName) : testName(testName) {;}
 
-  	/** \brief TODO */
+  	/** \brief Test case destructor */
   	virtual ~TestCase() {};
 
-  	/** \brief TODO */
+  	/** \brief Get the name of this test case */
     virtual std::string getTestName() const {return testName;}
 
-    /** \brief TODO */
+    /** \brief Run the code for this test. If this method completes without
+     *         throwing any exceptions the test is considered to have passed.
+     */
     virtual void runTest() const = 0;
 
   private:
@@ -162,12 +168,16 @@ class TestCase {
 };
 
 /**
- * \brief TODO
+ * \brief This class defines a Test Set, which is really just a collection of
+ *        test cases. Uses the factory pattern; objects of this class should
+ *        not be directly constructed. When one is needed, call getTestSet().
  */
 class TestSet {
 public:
   /**
-   * \brief TODO
+   * \brief get a reference to a test set; at present, we maintain only one
+   *        test set. On the first call, it is constructed. Every subsequent
+   *        call just returns a reference to the same set.
    */
   static TestSet& getTestSet() {
     static TestSet* tset = new TestSet();
@@ -175,7 +185,7 @@ public:
   }
 
   /**
-   * \brief TODO
+   * \brief add a test case to this test set.
    */
   void addTest(const TestCase* b) {
     tests.push_back(b);
@@ -183,7 +193,8 @@ public:
   }
 
   /**
-   * \brief TODO
+   * \brief run all of the test cases in this test set and output their
+   *        name and success/failure to stderr.
    */
   bool run() {
     bool okay = true;
@@ -205,16 +216,20 @@ public:
   }
 
 private:
-  /** \brief TODO **/
+  /** collection of test cases in this test set; store as pointers to allows
+   *  run-time polymorphism; user-defined test cases extend TestCase.
+   */
   std::vector<const TestCase*> tests;
 
-  /** \brief TODO **/
+  /** \brief make the constructor private; this is a factory class, so we
+   *         disallow construction from outside.
+   */
   TestSet()  {;}
 
-  /** \brief TODO **/
+  /** \brief make the destructor private */
   ~TestSet()  {;}
 
-  /** \brief TODO **/
+  /** \brief what is the length of the name of the test with the longest name */
   size_t maxNameLength() const {
     size_t m = 0;
     for (size_t i = 0; i < tests.size(); ++i)
@@ -225,17 +240,24 @@ private:
 };
 
 /**
- * \brief TODO
+ * \brief This is a helper class that facilitates automatic registration of
+ *        tests. When one of these is constructed, it is given a TestSet
+ *        pointer (in reality, a pointer to an object that is a subclass of
+ *        TestSet), which it registers with a static test set maintained by
+ *        the TestSet class.
  */
 class TestCaseAdder {
 public:
   /**
-   * \brief TODO
+   * \brief construct a TestCaseAdder; just register the test case with
+   *        a test set; note that TestSet::getTestSet() returns a static
+   *        test set, so these are always registered with the same test
+   *        at the moment.
    */
   TestCaseAdder(const TestCase* b) { TestSet::getTestSet().addTest(b); }
 
   /**
-   * \brief TODO
+   * \brief destructor; nothing to do here really.
    */
   ~TestCaseAdder() { }
 };
@@ -245,12 +267,18 @@ public:
  ******************************************************************************/
 
 /**
- * \brief TODO
+ * \brief This is the macro that users will employ to define their tests. Each
+ *        test they define is a sub-class of TestCase. We use a little trick
+ *        here to do automatic test registration. The class has a static member
+ *        of TestCaseAdder, which we initialise when the macro is expanded,
+ *        passing to it an object constructed from the newly defined test case
+ *        class. The TestCaseAdder then just registers this object with a
+ *        static test set maintained by the TestSet class.
  */
 #define TEST(NAME)                                                      \
-	class NAME : public TestCase {                                        \
+  class NAME : public TestCase {                                        \
     public:                                                             \
-    	NAME(const std::string& testName) : TestCase( testName ) { ; }    \
+      NAME(const std::string& testName) : TestCase( testName ) { ; }    \
       virtual void runTest() const;                                     \
     private:                                                            \
       static TestCaseAdder adder;                                       \
