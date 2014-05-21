@@ -89,6 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;iostream&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;sstream&gt;</code><br/>
 <code>#include &lt;cassert&gt;</code><br/>
 <code>#include &lt;cmath&gt;</code><br/>
 </div>
@@ -188,11 +189,7 @@ Copyright Details</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (A.size() != B.size()) <span class="keywordflow">throw</span> <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>();  \
-  for (<span class="keywordtype">size_t</span> i = 0; i &lt; A.size(); ++i) {               \
-    if (A[i] != B[i]) <span class="keywordflow">throw</span> <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>();        \
-  }
-</pre></div>
+
 <p>Test whether two random-access containers A and B are equal. Throw a <a class="el" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> if they aren't. </p>
 <p>This will work for any containers where .size() and random access via [] is defined (things like vector, for example). Additionally, the types in A and B must support !=, though they needn't necessarily be the same type.</p>
 <p>A and B are equal if they contain the same number of items and each pairwise element comparison with != evaluates to false. </p>
@@ -286,7 +283,7 @@ Copyright Details</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 21 2014 02:04:41 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 21 2014 05:07:54 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
