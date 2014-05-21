@@ -34,6 +34,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
 #include <cassert>
 #include <cmath>
 
@@ -85,9 +86,40 @@ private:
  *        pairwise element comparison with != evaluates to false.
  */
 #define EXPECT_EQUAL_STL_CONTAINER(A,B)                 \
-  if (A.size() != B.size()) throw TinyTestException();  \
+  if (A.size() != B.size()) {                           \
+    std::stringstream ss;                               \
+    ss << "EXPECT_EQUAL_STL_CONTAINER failed on"        \
+       << "comparison of ";                             \
+    for (size_t j = 0; j < A.size(); j++) {             \
+      if (j != 0) ss << ", ";                           \
+      ss << A[j];                                       \
+    }                                                   \
+    ss << " and ";                                      \
+    for (size_t j = 0; j < B.size(); j++) {             \
+      if (j != 0) ss << ", ";                           \
+      ss << B[j];                                       \
+    }                                                   \
+    ss << ". Unequal sizes.";                           \
+    throw TinyTestException();                          \
+  }                                                     \
   for (size_t i = 0; i < A.size(); ++i) {               \
-    if (A[i] != B[i]) throw TinyTestException();        \
+    if (A[i] != B[i]) {                                 \
+      std::stringstream ss;                             \
+      ss << "EXPECT_EQUAL_STL_CONTAINER failed on "     \
+         << "comparison of " << A[i]                    \
+         << " and " << B[i] << ". Full container "      \
+         << "contents: ";                               \
+      for (size_t j = 0; j < A.size(); j++) {           \
+        if (j != 0) ss << ", ";                         \
+        ss << A[j];                                     \
+      }                                                 \
+      ss << " and ";                                    \
+      for (size_t j = 0; j < B.size(); j++) {           \
+        if (j != 0) ss << ", ";                         \
+        ss << B[j];                                     \
+      }                                                 \
+      throw TinyTestException(ss.str());                \
+    }                                                   \
   }
 
 /**
@@ -208,7 +240,10 @@ public:
         tests[i]->runTest();
         std::cout << "[PASSED]" << std::endl;
       } catch (TinyTestException e) {
-        std::cout << "[FAILED]" << std::endl;
+        if (std::string(e.what()).empty())
+          std::cout << "[FAILED] [Reason: UNKNOWN]" << std::endl;
+        else
+          std::cout << "[FAILED] [Reason: " << e.what() << "]" << std::endl;
         okay = false;
       }
     }
