@@ -141,15 +141,15 @@ private:
  *        the difference between pairwise elements (evaluated by the - operator)
  *        is within the specified tolerance.
  */
-#define EXPECT_NEAR_STL_CONTAINER(A,B,TOL)                    \
-  if (A.size() != B.size()) {                                 \
-    std::stringstream ss;                                     \
-    ss << "EXPECT_NEAR_STL_CONTAINER failed on "              \
-       << "comparison of " << TinyTest::vecToString(A)        \
-       << " and " <<  TinyTest::vecToString(B) << ". "        \
-       << "Unequal sizes.";                                   \
-    throw TinyTestException(ss.str());                        \
-  }                                                           \
+#define EXPECT_NEAR_STL_CONTAINER(A,B,TOL)                            \
+  if (A.size() != B.size()) {                                         \
+    std::stringstream ss;                                             \
+    ss << "EXPECT_NEAR_STL_CONTAINER failed on "                      \
+       << "comparison of " << TinyTest::vecToString(A)                \
+       << " and " <<  TinyTest::vecToString(B) << ". "                \
+       << "Unequal sizes.";                                           \
+    throw TinyTestException(ss.str());                                \
+  }                                                                   \
   for (size_t i = 0; i < A.size(); ++i) {                             \
     if (std::fabs(A[i] - B[i]) > TOL) throw TinyTestException();      \
   }
@@ -168,7 +168,13 @@ private:
  *        by the caller. Basically, this is for floating point numbers.
  */
 #define EXPECT_NEAR(A,B,TOL)                                \
-  if (std::fabs(A - B) > TOL) throw TinyTestException()     \
+  if (std::fabs(A - B) > TOL) {                             \
+    std::stringstream ss;                                   \
+    ss << "EXPECT_NEAR failed on comparison of "            \
+       << A << " and " << B                                 \
+       << " with tolerance of " << TOL;                     \
+    throw TinyTestException(ss.str());                      \
+  }
 
 /**
  * \brief This macro tests whether A and B are _almost_ equal. The
