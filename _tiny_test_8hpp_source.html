@@ -153,15 +153,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00126"></a>00126 <span class="preprocessor">    }                                                   \</span>
 <a name="l00127"></a>00127 <span class="preprocessor">  }</span>
 <a name="l00128"></a>00128 <span class="preprocessor"></span>
-<a name="l00144"></a><a class="code" href="_tiny_test_8hpp.html#a5d109af02a7508cb9521a52b864db7c6">00144</a> <span class="preprocessor">#define EXPECT_NEAR_STL_CONTAINER(A,B,TOL)                    \</span>
-<a name="l00145"></a>00145 <span class="preprocessor">  if (A.size() != B.size()) {                                 \</span>
-<a name="l00146"></a>00146 <span class="preprocessor">    std::stringstream ss;                                     \</span>
-<a name="l00147"></a>00147 <span class="preprocessor">    ss &lt;&lt; &quot;EXPECT_NEAR_STL_CONTAINER failed on &quot;              \</span>
-<a name="l00148"></a>00148 <span class="preprocessor">       &lt;&lt; &quot;comparison of &quot; &lt;&lt; TinyTest::vecToString(A)        \</span>
-<a name="l00149"></a>00149 <span class="preprocessor">       &lt;&lt; &quot; and &quot; &lt;&lt;  TinyTest::vecToString(B) &lt;&lt; &quot;. &quot;        \</span>
-<a name="l00150"></a>00150 <span class="preprocessor">       &lt;&lt; &quot;Unequal sizes.&quot;;                                   \</span>
-<a name="l00151"></a>00151 <span class="preprocessor">    throw TinyTestException(ss.str());                        \</span>
-<a name="l00152"></a>00152 <span class="preprocessor">  }                                                           \</span>
+<a name="l00144"></a><a class="code" href="_tiny_test_8hpp.html#a5d109af02a7508cb9521a52b864db7c6">00144</a> <span class="preprocessor">#define EXPECT_NEAR_STL_CONTAINER(A,B,TOL)                            \</span>
+<a name="l00145"></a>00145 <span class="preprocessor">  if (A.size() != B.size()) {                                         \</span>
+<a name="l00146"></a>00146 <span class="preprocessor">    std::stringstream ss;                                             \</span>
+<a name="l00147"></a>00147 <span class="preprocessor">    ss &lt;&lt; &quot;EXPECT_NEAR_STL_CONTAINER failed on &quot;                      \</span>
+<a name="l00148"></a>00148 <span class="preprocessor">       &lt;&lt; &quot;comparison of &quot; &lt;&lt; TinyTest::vecToString(A)                \</span>
+<a name="l00149"></a>00149 <span class="preprocessor">       &lt;&lt; &quot; and &quot; &lt;&lt;  TinyTest::vecToString(B) &lt;&lt; &quot;. &quot;                \</span>
+<a name="l00150"></a>00150 <span class="preprocessor">       &lt;&lt; &quot;Unequal sizes.&quot;;                                           \</span>
+<a name="l00151"></a>00151 <span class="preprocessor">    throw TinyTestException(ss.str());                                \</span>
+<a name="l00152"></a>00152 <span class="preprocessor">  }                                                                   \</span>
 <a name="l00153"></a>00153 <span class="preprocessor">  for (size_t i = 0; i &lt; A.size(); ++i) {                             \</span>
 <a name="l00154"></a>00154 <span class="preprocessor">    if (std::fabs(A[i] - B[i]) &gt; TOL) throw TinyTestException();      \</span>
 <a name="l00155"></a>00155 <span class="preprocessor">  }</span>
@@ -171,103 +171,108 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00164"></a>00164 <span class="preprocessor"></span>
 <a name="l00165"></a>00165 <span class="preprocessor"></span>
 <a name="l00170"></a><a class="code" href="_tiny_test_8hpp.html#adbe3b51bf14b9ed6b3a71c1dfc54d07e">00170</a> <span class="preprocessor">#define EXPECT_NEAR(A,B,TOL)                                \</span>
-<a name="l00171"></a>00171 <span class="preprocessor">  if (std::fabs(A - B) &gt; TOL) throw TinyTestException()     \</span>
-<a name="l00172"></a>00172 <span class="preprocessor"></span>
-<a name="l00173"></a>00173 <span class="preprocessor"></span>
-<a name="l00178"></a><a class="code" href="_tiny_test_8hpp.html#a085d4cd46707bbe5680a243d96bc8bce">00178</a> <span class="preprocessor">#define EXPECT_NEAR_DEF(A,B)                               \</span>
-<a name="l00179"></a>00179 <span class="preprocessor">  if (std::fabs(A - B) &gt; 1e-20) throw TinyTestException()  \</span>
-<a name="l00180"></a>00180 <span class="preprocessor"></span>
-<a name="l00181"></a>00181 <span class="preprocessor"></span><span class="comment">/******************************************************************************</span>
-<a name="l00182"></a>00182 <span class="comment"> **       Classes for definition, and automagic detection of test cases      **</span>
-<a name="l00183"></a>00183 <span class="comment"> ******************************************************************************/</span>
-<a name="l00184"></a>00184 
-<a name="l00190"></a><a class="code" href="class_test_case.html">00190</a> <span class="keyword">class </span><a class="code" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a> {
-<a name="l00191"></a>00191   <span class="keyword">public</span>:
-<a name="l00195"></a><a class="code" href="class_test_case.html#abd5614032c8431adf7129c430d47b49d">00195</a>     <a class="code" href="class_test_case.html#abd5614032c8431adf7129c430d47b49d" title="Construct a new test case with the given name.">TestCase</a> (<span class="keyword">const</span> std::string&amp; <a class="code" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">testName</a>) : testName(testName) {;}
-<a name="l00196"></a>00196 
-<a name="l00198"></a><a class="code" href="class_test_case.html#a58f219ba1cddb042028c4d4d24599d9b">00198</a>     <span class="keyword">virtual</span> <a class="code" href="class_test_case.html#a58f219ba1cddb042028c4d4d24599d9b" title="Test case destructor.">~TestCase</a>() {};
-<a name="l00199"></a>00199 
-<a name="l00201"></a><a class="code" href="class_test_case.html#ac7ef02b75b17615576045bccf5621eaa">00201</a>     <span class="keyword">virtual</span> std::string <a class="code" href="class_test_case.html#ac7ef02b75b17615576045bccf5621eaa" title="Get the name of this test case.">getTestName</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">testName</a>;}
+<a name="l00171"></a>00171 <span class="preprocessor">  if (std::fabs(A - B) &gt; TOL) {                             \</span>
+<a name="l00172"></a>00172 <span class="preprocessor">    std::stringstream ss;                                   \</span>
+<a name="l00173"></a>00173 <span class="preprocessor">    ss &lt;&lt; &quot;EXPECT_NEAR failed on comparison of &quot;            \</span>
+<a name="l00174"></a>00174 <span class="preprocessor">       &lt;&lt; A &lt;&lt; &quot; and &quot; &lt;&lt; B                                 \</span>
+<a name="l00175"></a>00175 <span class="preprocessor">       &lt;&lt; &quot; with tolerance of &quot; &lt;&lt; TOL;                     \</span>
+<a name="l00176"></a>00176 <span class="preprocessor">    throw TinyTestException(ss.str());                      \</span>
+<a name="l00177"></a>00177 <span class="preprocessor">  }</span>
+<a name="l00178"></a>00178 <span class="preprocessor"></span>
+<a name="l00184"></a><a class="code" href="_tiny_test_8hpp.html#a085d4cd46707bbe5680a243d96bc8bce">00184</a> <span class="preprocessor">#define EXPECT_NEAR_DEF(A,B)                               \</span>
+<a name="l00185"></a>00185 <span class="preprocessor">  if (std::fabs(A - B) &gt; 1e-20) throw TinyTestException()  \</span>
+<a name="l00186"></a>00186 <span class="preprocessor"></span>
+<a name="l00187"></a>00187 <span class="preprocessor"></span><span class="comment">/******************************************************************************</span>
+<a name="l00188"></a>00188 <span class="comment"> **       Classes for definition, and automagic detection of test cases      **</span>
+<a name="l00189"></a>00189 <span class="comment"> ******************************************************************************/</span>
+<a name="l00190"></a>00190 
+<a name="l00196"></a><a class="code" href="class_test_case.html">00196</a> <span class="keyword">class </span><a class="code" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a> {
+<a name="l00197"></a>00197   <span class="keyword">public</span>:
+<a name="l00201"></a><a class="code" href="class_test_case.html#abd5614032c8431adf7129c430d47b49d">00201</a>     <a class="code" href="class_test_case.html#abd5614032c8431adf7129c430d47b49d" title="Construct a new test case with the given name.">TestCase</a> (<span class="keyword">const</span> std::string&amp; <a class="code" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">testName</a>) : testName(testName) {;}
 <a name="l00202"></a>00202 
-<a name="l00206"></a>00206     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_test_case.html#a43b85eb7190586a285dde4f870c20d42" title="Run the code for this test. If this method completes without throwing any exceptions the test is cons...">runTest</a>() <span class="keyword">const</span> = 0;
-<a name="l00207"></a>00207 
-<a name="l00208"></a>00208   <span class="keyword">private</span>:
-<a name="l00210"></a><a class="code" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">00210</a>     std::string <a class="code" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">testName</a>;
-<a name="l00211"></a>00211 };
-<a name="l00212"></a>00212 
-<a name="l00218"></a><a class="code" href="class_test_set.html">00218</a> <span class="keyword">class </span><a class="code" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a> {
-<a name="l00219"></a>00219 <span class="keyword">public</span>:
-<a name="l00225"></a><a class="code" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c">00225</a>   <span class="keyword">static</span> <a class="code" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a>&amp; <a class="code" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c" title="get a reference to a test set; at present, we maintain only one test set. On the first call...">getTestSet</a>() {
-<a name="l00226"></a>00226     <span class="keyword">static</span> <a class="code" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a>* tset = <span class="keyword">new</span> <a class="code" href="class_test_set.html#a093caf5ec42b07292c519b2cf3334043" title="make the constructor private; this is a factory class, so we disallow construction from outside...">TestSet</a>();
-<a name="l00227"></a>00227     <span class="keywordflow">return</span> *tset;
-<a name="l00228"></a>00228   }
-<a name="l00229"></a>00229 
-<a name="l00233"></a><a class="code" href="class_test_set.html#aec8f082e5164c81c71c2ec2afce9d914">00233</a>   <span class="keywordtype">void</span> <a class="code" href="class_test_set.html#aec8f082e5164c81c71c2ec2afce9d914" title="add a test case to this test set.">addTest</a>(<span class="keyword">const</span> <a class="code" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>* b) {
-<a name="l00234"></a>00234     <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>.push_back(b);
-<a name="l00235"></a>00235     std::cout &lt;&lt; <span class="stringliteral">&quot;Discovered test: &quot;</span> &lt;&lt; b-&gt;<a class="code" href="class_test_case.html#ac7ef02b75b17615576045bccf5621eaa" title="Get the name of this test case.">getTestName</a>() &lt;&lt; std::endl;
-<a name="l00236"></a>00236   }
-<a name="l00237"></a>00237 
-<a name="l00242"></a><a class="code" href="class_test_set.html#a9bd60114542bffb563999a15a0fea43f">00242</a>   <span class="keywordtype">bool</span> <a class="code" href="class_test_set.html#a9bd60114542bffb563999a15a0fea43f" title="run all of the test cases in this test set and output their name and success/failure to stderr...">run</a>() {
-<a name="l00243"></a>00243     <span class="keywordtype">bool</span> okay = <span class="keyword">true</span>;
-<a name="l00244"></a>00244     <span class="keywordtype">size_t</span> maxPad = this-&gt;<a class="code" href="class_test_set.html#a26fee18c7e7154110a3e05c663225db7" title="what is the length of the name of the test with the longest name">maxNameLength</a>();
-<a name="l00245"></a>00245     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>.size(); ++i) {
-<a name="l00246"></a>00246       assert(<a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName().size() &lt;= maxPad);
-<a name="l00247"></a>00247       <span class="keywordtype">size_t</span> pad = maxPad - <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName().size();
-<a name="l00248"></a>00248       std::string padding (pad, <span class="charliteral">&#39; &#39;</span>);
-<a name="l00249"></a>00249       std::cout &lt;&lt; <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName() &lt;&lt; <span class="stringliteral">&quot; ... &quot;</span> &lt;&lt; padding;
-<a name="l00250"></a>00250       <span class="keywordflow">try</span> {
-<a name="l00251"></a>00251         <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;runTest();
-<a name="l00252"></a>00252         std::cout &lt;&lt; <span class="stringliteral">&quot;[PASSED]&quot;</span> &lt;&lt; std::endl;
-<a name="l00253"></a>00253       } <span class="keywordflow">catch</span> (<a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> e) {
-<a name="l00254"></a>00254         <span class="keywordflow">if</span> (std::string(e.<a class="code" href="class_tiny_test_exception.html#a9faf77f8f0b4618f4d4547492279118d" title="get the failure message for this TinyTestException">what</a>()).empty())
-<a name="l00255"></a>00255           std::cout &lt;&lt; <span class="stringliteral">&quot;[FAILED] [Reason: UNKNOWN]&quot;</span> &lt;&lt; std::endl;
-<a name="l00256"></a>00256         <span class="keywordflow">else</span>
-<a name="l00257"></a>00257           std::cout &lt;&lt; <span class="stringliteral">&quot;[FAILED] [Reason: &quot;</span> &lt;&lt; e.<a class="code" href="class_tiny_test_exception.html#a9faf77f8f0b4618f4d4547492279118d" title="get the failure message for this TinyTestException">what</a>() &lt;&lt; <span class="stringliteral">&quot;]&quot;</span> &lt;&lt; std::endl;
-<a name="l00258"></a>00258         okay = <span class="keyword">false</span>;
-<a name="l00259"></a>00259       }
-<a name="l00260"></a>00260     }
-<a name="l00261"></a>00261     <span class="keywordflow">return</span> okay;
-<a name="l00262"></a>00262   }
-<a name="l00263"></a>00263 
-<a name="l00264"></a>00264 <span class="keyword">private</span>:
-<a name="l00268"></a><a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">00268</a>   std::vector&lt;const TestCase*&gt; <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>;
+<a name="l00204"></a><a class="code" href="class_test_case.html#a58f219ba1cddb042028c4d4d24599d9b">00204</a>     <span class="keyword">virtual</span> <a class="code" href="class_test_case.html#a58f219ba1cddb042028c4d4d24599d9b" title="Test case destructor.">~TestCase</a>() {};
+<a name="l00205"></a>00205 
+<a name="l00207"></a><a class="code" href="class_test_case.html#ac7ef02b75b17615576045bccf5621eaa">00207</a>     <span class="keyword">virtual</span> std::string <a class="code" href="class_test_case.html#ac7ef02b75b17615576045bccf5621eaa" title="Get the name of this test case.">getTestName</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">testName</a>;}
+<a name="l00208"></a>00208 
+<a name="l00212"></a>00212     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_test_case.html#a43b85eb7190586a285dde4f870c20d42" title="Run the code for this test. If this method completes without throwing any exceptions the test is cons...">runTest</a>() <span class="keyword">const</span> = 0;
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214   <span class="keyword">private</span>:
+<a name="l00216"></a><a class="code" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">00216</a>     std::string <a class="code" href="class_test_case.html#a77ac2ae83711a42b57ce599bbc4cb5fe">testName</a>;
+<a name="l00217"></a>00217 };
+<a name="l00218"></a>00218 
+<a name="l00224"></a><a class="code" href="class_test_set.html">00224</a> <span class="keyword">class </span><a class="code" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a> {
+<a name="l00225"></a>00225 <span class="keyword">public</span>:
+<a name="l00231"></a><a class="code" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c">00231</a>   <span class="keyword">static</span> <a class="code" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a>&amp; <a class="code" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c" title="get a reference to a test set; at present, we maintain only one test set. On the first call...">getTestSet</a>() {
+<a name="l00232"></a>00232     <span class="keyword">static</span> <a class="code" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a>* tset = <span class="keyword">new</span> <a class="code" href="class_test_set.html#a093caf5ec42b07292c519b2cf3334043" title="make the constructor private; this is a factory class, so we disallow construction from outside...">TestSet</a>();
+<a name="l00233"></a>00233     <span class="keywordflow">return</span> *tset;
+<a name="l00234"></a>00234   }
+<a name="l00235"></a>00235 
+<a name="l00239"></a><a class="code" href="class_test_set.html#aec8f082e5164c81c71c2ec2afce9d914">00239</a>   <span class="keywordtype">void</span> <a class="code" href="class_test_set.html#aec8f082e5164c81c71c2ec2afce9d914" title="add a test case to this test set.">addTest</a>(<span class="keyword">const</span> <a class="code" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>* b) {
+<a name="l00240"></a>00240     <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>.push_back(b);
+<a name="l00241"></a>00241     std::cout &lt;&lt; <span class="stringliteral">&quot;Discovered test: &quot;</span> &lt;&lt; b-&gt;<a class="code" href="class_test_case.html#ac7ef02b75b17615576045bccf5621eaa" title="Get the name of this test case.">getTestName</a>() &lt;&lt; std::endl;
+<a name="l00242"></a>00242   }
+<a name="l00243"></a>00243 
+<a name="l00248"></a><a class="code" href="class_test_set.html#a9bd60114542bffb563999a15a0fea43f">00248</a>   <span class="keywordtype">bool</span> <a class="code" href="class_test_set.html#a9bd60114542bffb563999a15a0fea43f" title="run all of the test cases in this test set and output their name and success/failure to stderr...">run</a>() {
+<a name="l00249"></a>00249     <span class="keywordtype">bool</span> okay = <span class="keyword">true</span>;
+<a name="l00250"></a>00250     <span class="keywordtype">size_t</span> maxPad = this-&gt;<a class="code" href="class_test_set.html#a26fee18c7e7154110a3e05c663225db7" title="what is the length of the name of the test with the longest name">maxNameLength</a>();
+<a name="l00251"></a>00251     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>.size(); ++i) {
+<a name="l00252"></a>00252       assert(<a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName().size() &lt;= maxPad);
+<a name="l00253"></a>00253       <span class="keywordtype">size_t</span> pad = maxPad - <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName().size();
+<a name="l00254"></a>00254       std::string padding (pad, <span class="charliteral">&#39; &#39;</span>);
+<a name="l00255"></a>00255       std::cout &lt;&lt; <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName() &lt;&lt; <span class="stringliteral">&quot; ... &quot;</span> &lt;&lt; padding;
+<a name="l00256"></a>00256       <span class="keywordflow">try</span> {
+<a name="l00257"></a>00257         <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;runTest();
+<a name="l00258"></a>00258         std::cout &lt;&lt; <span class="stringliteral">&quot;[PASSED]&quot;</span> &lt;&lt; std::endl;
+<a name="l00259"></a>00259       } <span class="keywordflow">catch</span> (<a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> e) {
+<a name="l00260"></a>00260         <span class="keywordflow">if</span> (std::string(e.<a class="code" href="class_tiny_test_exception.html#a9faf77f8f0b4618f4d4547492279118d" title="get the failure message for this TinyTestException">what</a>()).empty())
+<a name="l00261"></a>00261           std::cout &lt;&lt; <span class="stringliteral">&quot;[FAILED] [Reason: UNKNOWN]&quot;</span> &lt;&lt; std::endl;
+<a name="l00262"></a>00262         <span class="keywordflow">else</span>
+<a name="l00263"></a>00263           std::cout &lt;&lt; <span class="stringliteral">&quot;[FAILED] [Reason: &quot;</span> &lt;&lt; e.<a class="code" href="class_tiny_test_exception.html#a9faf77f8f0b4618f4d4547492279118d" title="get the failure message for this TinyTestException">what</a>() &lt;&lt; <span class="stringliteral">&quot;]&quot;</span> &lt;&lt; std::endl;
+<a name="l00264"></a>00264         okay = <span class="keyword">false</span>;
+<a name="l00265"></a>00265       }
+<a name="l00266"></a>00266     }
+<a name="l00267"></a>00267     <span class="keywordflow">return</span> okay;
+<a name="l00268"></a>00268   }
 <a name="l00269"></a>00269 
-<a name="l00273"></a><a class="code" href="class_test_set.html#a093caf5ec42b07292c519b2cf3334043">00273</a>   <a class="code" href="class_test_set.html#a093caf5ec42b07292c519b2cf3334043" title="make the constructor private; this is a factory class, so we disallow construction from outside...">TestSet</a>()  {;}
-<a name="l00274"></a>00274 
-<a name="l00276"></a><a class="code" href="class_test_set.html#af88f5d804339ba208dc7655b6a54d39b">00276</a>   <a class="code" href="class_test_set.html#af88f5d804339ba208dc7655b6a54d39b" title="make the destructor private">~TestSet</a>()  {;}
-<a name="l00277"></a>00277 
-<a name="l00279"></a><a class="code" href="class_test_set.html#a26fee18c7e7154110a3e05c663225db7">00279</a>   <span class="keywordtype">size_t</span> <a class="code" href="class_test_set.html#a26fee18c7e7154110a3e05c663225db7" title="what is the length of the name of the test with the longest name">maxNameLength</a>()<span class="keyword"> const </span>{
-<a name="l00280"></a>00280     <span class="keywordtype">size_t</span> m = 0;
-<a name="l00281"></a>00281     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>.size(); ++i)
-<a name="l00282"></a>00282       <span class="keywordflow">if</span> (<a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName().size() &gt; m)
-<a name="l00283"></a>00283         m = <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName().size();
-<a name="l00284"></a>00284     <span class="keywordflow">return</span> m;
-<a name="l00285"></a>00285   }
-<a name="l00286"></a>00286 };
-<a name="l00287"></a>00287 
-<a name="l00295"></a><a class="code" href="class_test_case_adder.html">00295</a> <span class="keyword">class </span><a class="code" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a> {
-<a name="l00296"></a>00296 <span class="keyword">public</span>:
-<a name="l00303"></a><a class="code" href="class_test_case_adder.html#ad83467a2a9dfc572a6b77448d000c3ca">00303</a>   <a class="code" href="class_test_case_adder.html#ad83467a2a9dfc572a6b77448d000c3ca" title="construct a TestCaseAdder; just register the test case with a test set; note that TestSet::getTestSet...">TestCaseAdder</a>(<span class="keyword">const</span> <a class="code" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>* b) { <a class="code" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c" title="get a reference to a test set; at present, we maintain only one test set. On the first call...">TestSet::getTestSet</a>().<a class="code" href="class_test_set.html#aec8f082e5164c81c71c2ec2afce9d914" title="add a test case to this test set.">addTest</a>(b); }
-<a name="l00304"></a>00304 
-<a name="l00308"></a><a class="code" href="class_test_case_adder.html#a0737a7125e322fca90552a1b4c60786f">00308</a>   <a class="code" href="class_test_case_adder.html#a0737a7125e322fca90552a1b4c60786f" title="destructor; nothing to do here really.">~TestCaseAdder</a>() { }
-<a name="l00309"></a>00309 };
+<a name="l00270"></a>00270 <span class="keyword">private</span>:
+<a name="l00274"></a><a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">00274</a>   std::vector&lt;const TestCase*&gt; <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>;
+<a name="l00275"></a>00275 
+<a name="l00279"></a><a class="code" href="class_test_set.html#a093caf5ec42b07292c519b2cf3334043">00279</a>   <a class="code" href="class_test_set.html#a093caf5ec42b07292c519b2cf3334043" title="make the constructor private; this is a factory class, so we disallow construction from outside...">TestSet</a>()  {;}
+<a name="l00280"></a>00280 
+<a name="l00282"></a><a class="code" href="class_test_set.html#af88f5d804339ba208dc7655b6a54d39b">00282</a>   <a class="code" href="class_test_set.html#af88f5d804339ba208dc7655b6a54d39b" title="make the destructor private">~TestSet</a>()  {;}
+<a name="l00283"></a>00283 
+<a name="l00285"></a><a class="code" href="class_test_set.html#a26fee18c7e7154110a3e05c663225db7">00285</a>   <span class="keywordtype">size_t</span> <a class="code" href="class_test_set.html#a26fee18c7e7154110a3e05c663225db7" title="what is the length of the name of the test with the longest name">maxNameLength</a>()<span class="keyword"> const </span>{
+<a name="l00286"></a>00286     <span class="keywordtype">size_t</span> m = 0;
+<a name="l00287"></a>00287     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>.size(); ++i)
+<a name="l00288"></a>00288       <span class="keywordflow">if</span> (<a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName().size() &gt; m)
+<a name="l00289"></a>00289         m = <a class="code" href="class_test_set.html#a43dc781d7b2cfa335cb2ccbbce984afa">tests</a>[i]-&gt;getTestName().size();
+<a name="l00290"></a>00290     <span class="keywordflow">return</span> m;
+<a name="l00291"></a>00291   }
+<a name="l00292"></a>00292 };
+<a name="l00293"></a>00293 
+<a name="l00301"></a><a class="code" href="class_test_case_adder.html">00301</a> <span class="keyword">class </span><a class="code" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a> {
+<a name="l00302"></a>00302 <span class="keyword">public</span>:
+<a name="l00309"></a><a class="code" href="class_test_case_adder.html#ad83467a2a9dfc572a6b77448d000c3ca">00309</a>   <a class="code" href="class_test_case_adder.html#ad83467a2a9dfc572a6b77448d000c3ca" title="construct a TestCaseAdder; just register the test case with a test set; note that TestSet::getTestSet...">TestCaseAdder</a>(<span class="keyword">const</span> <a class="code" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>* b) { <a class="code" href="class_test_set.html#a73d91e7e126488172e1700871d132d5c" title="get a reference to a test set; at present, we maintain only one test set. On the first call...">TestSet::getTestSet</a>().<a class="code" href="class_test_set.html#aec8f082e5164c81c71c2ec2afce9d914" title="add a test case to this test set.">addTest</a>(b); }
 <a name="l00310"></a>00310 
-<a name="l00311"></a>00311 <span class="comment">/******************************************************************************</span>
-<a name="l00312"></a>00312 <span class="comment"> **                   Macros for test case definition                        **</span>
-<a name="l00313"></a>00313 <span class="comment"> ******************************************************************************/</span>
-<a name="l00314"></a>00314 
-<a name="l00324"></a><a class="code" href="_tiny_test_8hpp.html#a3a8dd86e1cab36109f7149282150152d">00324</a> <span class="preprocessor">#define TEST(NAME)                                                      \</span>
-<a name="l00325"></a>00325 <span class="preprocessor">  class NAME : public TestCase {                                        \</span>
-<a name="l00326"></a>00326 <span class="preprocessor">    public:                                                             \</span>
-<a name="l00327"></a>00327 <span class="preprocessor">      NAME(const std::string&amp; testName) : TestCase( testName ) { ; }    \</span>
-<a name="l00328"></a>00328 <span class="preprocessor">      virtual void runTest() const;                                     \</span>
-<a name="l00329"></a>00329 <span class="preprocessor">    private:                                                            \</span>
-<a name="l00330"></a>00330 <span class="preprocessor">      static TestCaseAdder adder;                                       \</span>
-<a name="l00331"></a>00331 <span class="preprocessor">  };                                                                    \</span>
-<a name="l00332"></a>00332 <span class="preprocessor">  TestCaseAdder NAME::adder(new NAME(#NAME));                           \</span>
-<a name="l00333"></a>00333 <span class="preprocessor">  void NAME::runTest() const</span>
-<a name="l00334"></a>00334 <span class="preprocessor"></span>
-<a name="l00335"></a>00335 <span class="preprocessor">#endif</span>
+<a name="l00314"></a><a class="code" href="class_test_case_adder.html#a0737a7125e322fca90552a1b4c60786f">00314</a>   <a class="code" href="class_test_case_adder.html#a0737a7125e322fca90552a1b4c60786f" title="destructor; nothing to do here really.">~TestCaseAdder</a>() { }
+<a name="l00315"></a>00315 };
+<a name="l00316"></a>00316 
+<a name="l00317"></a>00317 <span class="comment">/******************************************************************************</span>
+<a name="l00318"></a>00318 <span class="comment"> **                   Macros for test case definition                        **</span>
+<a name="l00319"></a>00319 <span class="comment"> ******************************************************************************/</span>
+<a name="l00320"></a>00320 
+<a name="l00330"></a><a class="code" href="_tiny_test_8hpp.html#a3a8dd86e1cab36109f7149282150152d">00330</a> <span class="preprocessor">#define TEST(NAME)                                                      \</span>
+<a name="l00331"></a>00331 <span class="preprocessor">  class NAME : public TestCase {                                        \</span>
+<a name="l00332"></a>00332 <span class="preprocessor">    public:                                                             \</span>
+<a name="l00333"></a>00333 <span class="preprocessor">      NAME(const std::string&amp; testName) : TestCase( testName ) { ; }    \</span>
+<a name="l00334"></a>00334 <span class="preprocessor">      virtual void runTest() const;                                     \</span>
+<a name="l00335"></a>00335 <span class="preprocessor">    private:                                                            \</span>
+<a name="l00336"></a>00336 <span class="preprocessor">      static TestCaseAdder adder;                                       \</span>
+<a name="l00337"></a>00337 <span class="preprocessor">  };                                                                    \</span>
+<a name="l00338"></a>00338 <span class="preprocessor">  TestCaseAdder NAME::adder(new NAME(#NAME));                           \</span>
+<a name="l00339"></a>00339 <span class="preprocessor">  void NAME::runTest() const</span>
+<a name="l00340"></a>00340 <span class="preprocessor"></span>
+<a name="l00341"></a>00341 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -286,7 +291,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 23 2014 03:12:35 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 23 2014 18:25:24 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
