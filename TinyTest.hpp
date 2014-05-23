@@ -39,6 +39,21 @@
 #include <cmath>
 
 /******************************************************************************
+ **                            HELPER FUNCTIONS                              **
+ ******************************************************************************/
+namespace TinyTest {
+  template<typename T>
+  std::string vecToString(std::vector<T> t) {
+    std::stringstream ss;
+    for (size_t i = 0; i < t.size(); ++i) {
+      if (i != 0) ss << ", ";
+      ss << t[i];
+    }
+    return ss.str();
+  }
+}
+
+/******************************************************************************
  **        Classes and macros for testing conditions in test cases           **
  ******************************************************************************/
 
@@ -70,8 +85,13 @@ private:
  *        The types of A and B must support !=, but they need not be the same
  *        type.
  */
-#define EXPECT_EQUAL(A,B)                   \
-  if (A != B) throw TinyTestException()     \
+#define EXPECT_EQUAL(A,B)                             \
+  if (A != B) {                                       \
+    std::stringstream ss;                             \
+    ss << "EXPECT_EQUAL failed on comparison of "     \
+       << A << " and " << B;                          \
+    throw TinyTestException(ss.str());                \
+  }
 
 /**
  * \brief Test whether two random-access containers A and B are equal. Throw a
@@ -89,18 +109,10 @@ private:
   if (A.size() != B.size()) {                           \
     std::stringstream ss;                               \
     ss << "EXPECT_EQUAL_STL_CONTAINER failed on"        \
-       << "comparison of ";                             \
-    for (size_t j = 0; j < A.size(); j++) {             \
-      if (j != 0) ss << ", ";                           \
-      ss << A[j];                                       \
-    }                                                   \
-    ss << " and ";                                      \
-    for (size_t j = 0; j < B.size(); j++) {             \
-      if (j != 0) ss << ", ";                           \
-      ss << B[j];                                       \
-    }                                                   \
-    ss << ". Unequal sizes.";                           \
-    throw TinyTestException();                          \
+       << "comparison of " << TinyTest::vecToString(A)  \
+       << " and " << TinyTest::vecToString(B) << ". "   \
+       << "Unequal sizes.";                             \
+    throw TinyTestException(ss.str());                  \
   }                                                     \
   for (size_t i = 0; i < A.size(); ++i) {               \
     if (A[i] != B[i]) {                                 \
@@ -108,16 +120,8 @@ private:
       ss << "EXPECT_EQUAL_STL_CONTAINER failed on "     \
          << "comparison of " << A[i]                    \
          << " and " << B[i] << ". Full container "      \
-         << "contents: ";                               \
-      for (size_t j = 0; j < A.size(); j++) {           \
-        if (j != 0) ss << ", ";                         \
-        ss << A[j];                                     \
-      }                                                 \
-      ss << " and ";                                    \
-      for (size_t j = 0; j < B.size(); j++) {           \
-        if (j != 0) ss << ", ";                         \
-        ss << B[j];                                     \
-      }                                                 \
+         << "contents: " << TinyTest::vecToString(A)    \
+         << " and " << TinyTest::vecToString(B);        \
       throw TinyTestException(ss.str());                \
     }                                                   \
   }
@@ -137,10 +141,17 @@ private:
  *        the difference between pairwise elements (evaluated by the - operator)
  *        is within the specified tolerance.
  */
-#define EXPECT_NEAR_STL_CONTAINER(A,B,TOL)                              \
-  if (A.size() != B.size()) throw TinyTestException();                  \
-  for (size_t i = 0; i < A.size(); ++i) {                               \
-    if (std::fabs(A[i] - B[i]) > TOL) throw TinyTestException();        \
+#define EXPECT_NEAR_STL_CONTAINER(A,B,TOL)                    \
+  if (A.size() != B.size()) {                                 \
+    std::stringstream ss;                                     \
+    ss << "EXPECT_NEAR_STL_CONTAINER failed on "              \
+       << "comparison of " << TinyTest::vecToString(A)        \
+       << " and " <<  TinyTest::vecToString(B) << ". "        \
+       << "Unequal sizes.";                                   \
+    throw TinyTestException(ss.str());                        \
+  }                                                           \
+  for (size_t i = 0; i < A.size(); ++i) {                             \
+    if (std::fabs(A[i] - B[i]) > TOL) throw TinyTestException();      \
   }
 
 /**
