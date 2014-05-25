@@ -85,12 +85,12 @@ private:
  *        The types of A and B must support !=, but they need not be the same
  *        type.
  */
-#define EXPECT_EQUAL(A,B)                             \
-  if (A != B) {                                       \
-    std::stringstream ss;                             \
-    ss << "EXPECT_EQUAL failed on comparison of "     \
-       << A << " and " << B;                          \
-    throw TinyTestException(ss.str());                \
+#define EXPECT_EQUAL(A,B)                                             \
+  if (A != B) {                                                       \
+    std::stringstream ss;                                             \
+    ss << "EXPECT_EQUAL failed on comparison of "                     \
+       << A << " and " << B;                                          \
+    throw TinyTestException(ss.str());                                \
   }
 
 /**
@@ -105,25 +105,25 @@ private:
  *        A and B are equal if they contain the same number of items and each
  *        pairwise element comparison with != evaluates to false.
  */
-#define EXPECT_EQUAL_STL_CONTAINER(A,B)                 \
-  if (A.size() != B.size()) {                           \
-    std::stringstream ss;                               \
-    ss << "EXPECT_EQUAL_STL_CONTAINER failed on"        \
-       << "comparison of " << TinyTest::vecToString(A)  \
-       << " and " << TinyTest::vecToString(B) << ". "   \
-       << "Unequal sizes.";                             \
-    throw TinyTestException(ss.str());                  \
-  }                                                     \
-  for (size_t i = 0; i < A.size(); ++i) {               \
-    if (A[i] != B[i]) {                                 \
-      std::stringstream ss;                             \
-      ss << "EXPECT_EQUAL_STL_CONTAINER failed on "     \
-         << "comparison of " << A[i]                    \
-         << " and " << B[i] << ". Full container "      \
-         << "contents: " << TinyTest::vecToString(A)    \
-         << " and " << TinyTest::vecToString(B);        \
-      throw TinyTestException(ss.str());                \
-    }                                                   \
+#define EXPECT_EQUAL_STL_CONTAINER(A,B)                               \
+  if (A.size() != B.size()) {                                         \
+    std::stringstream ss;                                             \
+    ss << "EXPECT_EQUAL_STL_CONTAINER failed on"                      \
+       << "comparison of " << TinyTest::vecToString(A)                \
+       << " and " << TinyTest::vecToString(B) << ". "                 \
+       << "Unequal sizes.";                                           \
+    throw TinyTestException(ss.str());                                \
+  }                                                                   \
+  for (size_t i = 0; i < A.size(); ++i) {                             \
+    if (A[i] != B[i]) {                                               \
+      std::stringstream ss;                                           \
+      ss << "EXPECT_EQUAL_STL_CONTAINER failed on "                   \
+         << "comparison of " << A[i]                                  \
+         << " and " << B[i] << ". Full container "                    \
+         << "contents: " << TinyTest::vecToString(A)                  \
+         << " and " << TinyTest::vecToString(B);                      \
+      throw TinyTestException(ss.str());                              \
+    }                                                                 \
   }
 
 /**
@@ -172,13 +172,13 @@ private:
  *        subtraction operator must be defined, and a tolerance can be specified
  *        by the caller. Basically, this is for floating point numbers.
  */
-#define EXPECT_NEAR(A,B,TOL)                                \
-  if (std::fabs(A - B) > TOL) {                             \
-    std::stringstream ss;                                   \
-    ss << "EXPECT_NEAR failed on comparison of "            \
-       << A << " and " << B                                 \
-       << " with tolerance of " << TOL;                     \
-    throw TinyTestException(ss.str());                      \
+#define EXPECT_NEAR(A,B,TOL)                                          \
+  if (std::fabs(A - B) > TOL) {                                       \
+    std::stringstream ss;                                             \
+    ss << "EXPECT_NEAR failed on comparison of "                      \
+       << A << " and " << B                                           \
+       << " with tolerance of " << TOL;                               \
+    throw TinyTestException(ss.str());                                \
   }
 
 /**
@@ -186,8 +186,8 @@ private:
  *        subtraction operator must be defined, and a default tolerance of
  *        1e-20 is allowed. Basically, this is for floating point numbers.
  */
-#define EXPECT_NEAR_DEF(A,B)                               \
-  if (std::fabs(A - B) > 1e-20) throw TinyTestException()  \
+#define EXPECT_NEAR_DEF(A,B)                                          \
+  if (std::fabs(A - B) > 1e-20) throw TinyTestException()             \
 
 /******************************************************************************
  **       Classes for definition, and automagic detection of test cases      **
