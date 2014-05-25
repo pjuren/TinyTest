@@ -114,9 +114,8 @@ Defines</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test whether two random-access containers A and B are equal. Throw a <a class="el" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> if they aren't.  <a href="#a82166f2051a14b197b357ee6d8972b9e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a5d109af02a7508cb9521a52b864db7c6">EXPECT_NEAR_STL_CONTAINER</a>(A, B, TOL)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test whether two random-access containers A and B contain elements that are approximately equal (within some specified tolerance). Throw a <a class="el" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> if they don't.  <a href="#a5d109af02a7508cb9521a52b864db7c6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16e4cb037161beddc807347a12cd3d8a"></a><!-- doxytag: member="TinyTest.hpp::EXPECT_NOT_EQUAL" ref="a16e4cb037161beddc807347a12cd3d8a" args="(A, B)" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a16e4cb037161beddc807347a12cd3d8a">EXPECT_NOT_EQUAL</a>(A, B)&#160;&#160;&#160;if (A == B) throw <a class="el" href="class_tiny_test_exception.html">TinyTestException</a>()     \</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macros tests whether A and B are _NOT_ equal. The equality oeprator must be defined for A and B, but they need not be the same type. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a16e4cb037161beddc807347a12cd3d8a">EXPECT_NOT_EQUAL</a>(A, B)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macros tests whether A and B are _NOT_ equal. The equality operator must be defined for A and B, but they need not be the same type.  <a href="#a16e4cb037161beddc807347a12cd3d8a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#adbe3b51bf14b9ed6b3a71c1dfc54d07e">EXPECT_NEAR</a>(A, B, TOL)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro tests whether A and B are _almost_ equal. The subtraction operator must be defined, and a tolerance can be specified by the caller. Basically, this is for floating point numbers.  <a href="#adbe3b51bf14b9ed6b3a71c1dfc54d07e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a085d4cd46707bbe5680a243d96bc8bce"></a><!-- doxytag: member="TinyTest.hpp::EXPECT_NEAR_DEF" ref="a085d4cd46707bbe5680a243d96bc8bce" args="(A, B)" -->
@@ -316,6 +315,41 @@ Copyright Details</h2>
 
 </div>
 </div>
+<a class="anchor" id="a16e4cb037161beddc807347a12cd3d8a"></a><!-- doxytag: member="TinyTest.hpp::EXPECT_NOT_EQUAL" ref="a16e4cb037161beddc807347a12cd3d8a" args="(A, B)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="_tiny_test_8hpp.html#a16e4cb037161beddc807347a12cd3d8a">EXPECT_NOT_EQUAL</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">A, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (A == B) {                                                       \
+    std::stringstream ss;                                             \
+    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_NOT_EQUAL failed on comparison of &quot;</span>                 \
+       &lt;&lt; A &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B;                                          \
+    throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                                \
+  }
+</pre></div>
+<p>This macros tests whether A and B are _NOT_ equal. The equality operator must be defined for A and B, but they need not be the same type. </p>
+
+</div>
+</div>
 <a class="anchor" id="a3a8dd86e1cab36109f7149282150152d"></a><!-- doxytag: member="TinyTest.hpp::TEST" ref="a3a8dd86e1cab36109f7149282150152d" args="(NAME)" -->
 <div class="memitem">
 <div class="memproto">
@@ -362,7 +396,7 @@ Copyright Details</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 23 2014 18:27:02 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 25 2014 01:41:17 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
