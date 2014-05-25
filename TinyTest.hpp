@@ -158,7 +158,16 @@ private:
     throw TinyTestException(ss.str());                                \
   }                                                                   \
   for (size_t i = 0; i < A.size(); ++i) {                             \
-    if (std::fabs(A[i] - B[i]) > TOL) throw TinyTestException();      \
+    if (std::fabs(A[i] - B[i]) > TOL) {                               \
+      std::stringstream ss;                                           \
+      ss << "EXPECT_NEAR_STL_CONTAINER failed on "                    \
+         << "comparison of " << A[i]                                  \
+         << " and " << B[i] << " with tolerance of "                  \
+         << TOL << ". Full container "                                \
+         << "contents: " << TinyTest::vecToString(A)                  \
+         << " and " << TinyTest::vecToString(B);                      \
+      throw TinyTestException(ss.str());                              \
+    }                                                                 \
   }
 
 /**
