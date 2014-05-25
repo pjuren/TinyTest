@@ -78,7 +78,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Defines</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">TinyTest.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -118,9 +119,8 @@ Defines</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macros tests whether A and B are _NOT_ equal. The equality operator must be defined for A and B, but they need not be the same type.  <a href="#a16e4cb037161beddc807347a12cd3d8a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#adbe3b51bf14b9ed6b3a71c1dfc54d07e">EXPECT_NEAR</a>(A, B, TOL)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro tests whether A and B are _almost_ equal. The subtraction operator must be defined, and a tolerance can be specified by the caller. Basically, this is for floating point numbers.  <a href="#adbe3b51bf14b9ed6b3a71c1dfc54d07e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a085d4cd46707bbe5680a243d96bc8bce"></a><!-- doxytag: member="TinyTest.hpp::EXPECT_NEAR_DEF" ref="a085d4cd46707bbe5680a243d96bc8bce" args="(A, B)" -->
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a085d4cd46707bbe5680a243d96bc8bce">EXPECT_NEAR_DEF</a>(A, B)&#160;&#160;&#160;if (std::fabs(A - B) &gt; 1e-20) throw TinyTestException()  \</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro tests whether A and B are _almost_ equal. The subtraction operator must be defined, and a default tolerance of 1e-20 is allowed. Basically, this is for floating point numbers. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a085d4cd46707bbe5680a243d96bc8bce">EXPECT_NEAR_DEF</a>(A, B)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro tests whether A and B are _almost_ equal. The subtraction operator must be defined, and a default tolerance of 1e-20 is allowed. Basically, this is for floating point numbers.  <a href="#a085d4cd46707bbe5680a243d96bc8bce"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tiny_test_8hpp.html#a3a8dd86e1cab36109f7149282150152d">TEST</a>(NAME)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the macro that users will employ to define their tests. Each test they define is a sub-class of <a class="el" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>. We use a little trick here to do automatic test registration. The class has a static member of <a class="el" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a>, which we initialise when the macro is expanded, passing to it an object constructed from the newly defined test case class. The <a class="el" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a> then just registers this object with a static test set maintained by the <a class="el" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a> class.  <a href="#a3a8dd86e1cab36109f7149282150152d"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
@@ -128,6 +128,10 @@ Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2"><a class="anchor" id="a95f4d20d1076552169720531b26407cb"></a><!-- doxytag: member="TinyTest.hpp::vecToString" ref="a95f4d20d1076552169720531b26407cb" args="(std::vector&lt; T &gt; t)" -->
 template&lt;typename T &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><b>TinyTest::vecToString</b> (std::vector&lt; T &gt; t)</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee58b749326580020cebdbc3206fe732"></a><!-- doxytag: member="TinyTest.hpp::DEF_TOLERANCE" ref="aee58b749326580020cebdbc3206fe732" args="" -->
+static const double&#160;</td><td class="memItemRight" valign="bottom"><b>TinyTest::DEF_TOLERANCE</b> = 1e-20</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file contains most of the code for TinyTest, including the macros for test definition and condition checking, the classes for automatic test registration and the exceptions. You should include this file at the top of your test suite. </p>
@@ -163,11 +167,11 @@ Copyright Details</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (A != B) {                                       \
-    std::stringstream ss;                             \
-    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_EQUAL failed on comparison of &quot;</span>     \
-       &lt;&lt; A &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B;                          \
-    throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                \
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (A != B) {                                                       \
+    std::stringstream ss;                                             \
+    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_EQUAL failed on comparison of &quot;</span>                     \
+       &lt;&lt; A &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B;                                          \
+    throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                                \
   }
 </pre></div>
 <p>Test whether two variables A and B are exactly equal. Throw a <a class="el" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> if they aren't. </p>
@@ -199,24 +203,24 @@ Copyright Details</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (A.size() != B.size()) {                           \
-    std::stringstream ss;                               \
-    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_EQUAL_STL_CONTAINER failed on&quot;</span>        \
-       &lt;&lt; <span class="stringliteral">&quot;comparison of &quot;</span> &lt;&lt; TinyTest::vecToString(A)  \
-       &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; TinyTest::vecToString(B) &lt;&lt; <span class="stringliteral">&quot;. &quot;</span>   \
-       &lt;&lt; <span class="stringliteral">&quot;Unequal sizes.&quot;</span>;                             \
-    throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                  \
-  }                                                     \
-  for (<span class="keywordtype">size_t</span> i = 0; i &lt; A.size(); ++i) {               \
-    if (A[i] != B[i]) {                                 \
-      std::stringstream ss;                             \
-      ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_EQUAL_STL_CONTAINER failed on &quot;</span>     \
-         &lt;&lt; <span class="stringliteral">&quot;comparison of &quot;</span> &lt;&lt; A[i]                    \
-         &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B[i] &lt;&lt; <span class="stringliteral">&quot;. Full container &quot;</span>      \
-         &lt;&lt; <span class="stringliteral">&quot;contents: &quot;</span> &lt;&lt; TinyTest::vecToString(A)    \
-         &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; TinyTest::vecToString(B);        \
-      throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                \
-    }                                                   \
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (A.size() != B.size()) {                                         \
+    std::stringstream ss;                                             \
+    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_EQUAL_STL_CONTAINER failed on&quot;</span>                      \
+       &lt;&lt; <span class="stringliteral">&quot;comparison of &quot;</span> &lt;&lt; TinyTest::vecToString(A)                \
+       &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; TinyTest::vecToString(B) &lt;&lt; <span class="stringliteral">&quot;. &quot;</span>                 \
+       &lt;&lt; <span class="stringliteral">&quot;Unequal sizes.&quot;</span>;                                           \
+    throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                                \
+  }                                                                   \
+  for (<span class="keywordtype">size_t</span> i = 0; i &lt; A.size(); ++i) {                             \
+    if (A[i] != B[i]) {                                               \
+      std::stringstream ss;                                           \
+      ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_EQUAL_STL_CONTAINER failed on &quot;</span>                   \
+         &lt;&lt; <span class="stringliteral">&quot;comparison of &quot;</span> &lt;&lt; A[i]                                  \
+         &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B[i] &lt;&lt; <span class="stringliteral">&quot;. Full container &quot;</span>                    \
+         &lt;&lt; <span class="stringliteral">&quot;contents: &quot;</span> &lt;&lt; TinyTest::vecToString(A)                  \
+         &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; TinyTest::vecToString(B);                      \
+      throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                              \
+    }                                                                 \
   }
 </pre></div>
 <p>Test whether two random-access containers A and B are equal. Throw a <a class="el" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> if they aren't. </p>
@@ -255,15 +259,51 @@ Copyright Details</h2>
       </table>
 </div>
 <div class="memdoc">
-<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (std::fabs(A - B) &gt; TOL) {                             \
-    std::stringstream ss;                                   \
-    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_NEAR failed on comparison of &quot;</span>            \
-       &lt;&lt; A &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B                                 \
-       &lt;&lt; <span class="stringliteral">&quot; with tolerance of &quot;</span> &lt;&lt; TOL;                     \
-    throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                      \
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (std::fabs(A - B) &gt; TOL) {                                       \
+    std::stringstream ss;                                             \
+    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_NEAR failed on comparison of &quot;</span>                      \
+       &lt;&lt; A &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B                                           \
+       &lt;&lt; <span class="stringliteral">&quot; with tolerance of &quot;</span> &lt;&lt; TOL;                               \
+    throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                                \
   }
 </pre></div>
 <p>This macro tests whether A and B are _almost_ equal. The subtraction operator must be defined, and a tolerance can be specified by the caller. Basically, this is for floating point numbers. </p>
+
+</div>
+</div>
+<a class="anchor" id="a085d4cd46707bbe5680a243d96bc8bce"></a><!-- doxytag: member="TinyTest.hpp::EXPECT_NEAR_DEF" ref="a085d4cd46707bbe5680a243d96bc8bce" args="(A, B)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="_tiny_test_8hpp.html#a085d4cd46707bbe5680a243d96bc8bce">EXPECT_NEAR_DEF</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">A, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (std::fabs(A - B) &gt; TinyTest::DEF_TOLERANCE) {                   \
+    std::stringstream ss;                                             \
+    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_NEAR_DEF failed on comparison of &quot;</span>                  \
+       &lt;&lt; A &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B                                           \
+       &lt;&lt; <span class="stringliteral">&quot; with tolerance of &quot;</span> &lt;&lt; TinyTest::DEF_TOLERANCE;           \
+    throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                                \
+  }
+</pre></div>
+<p>This macro tests whether A and B are _almost_ equal. The subtraction operator must be defined, and a default tolerance of 1e-20 is allowed. Basically, this is for floating point numbers. </p>
 
 </div>
 </div>
@@ -306,7 +346,16 @@ Copyright Details</h2>
     throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                                \
   }                                                                   \
   for (<span class="keywordtype">size_t</span> i = 0; i &lt; A.size(); ++i) {                             \
-    if (std::fabs(A[i] - B[i]) &gt; TOL) throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>();      \
+    if (std::fabs(A[i] - B[i]) &gt; TOL) {                               \
+      std::stringstream ss;                                           \
+      ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_NEAR_STL_CONTAINER failed on &quot;</span>                    \
+         &lt;&lt; <span class="stringliteral">&quot;comparison of &quot;</span> &lt;&lt; A[i]                                  \
+         &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B[i] &lt;&lt; <span class="stringliteral">&quot; with tolerance of &quot;</span>                  \
+         &lt;&lt; TOL &lt;&lt; <span class="stringliteral">&quot;. Full container &quot;</span>                                \
+         &lt;&lt; <span class="stringliteral">&quot;contents: &quot;</span> &lt;&lt; TinyTest::vecToString(A)                  \
+         &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; TinyTest::vecToString(B);                      \
+      throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                              \
+    }                                                                 \
   }
 </pre></div>
 <p>Test whether two random-access containers A and B contain elements that are approximately equal (within some specified tolerance). Throw a <a class="el" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a> if they don't. </p>
@@ -396,7 +445,7 @@ Copyright Details</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 25 2014 01:41:49 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 25 2014 02:11:29 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
