@@ -156,11 +156,16 @@ private:
 
 /**
  * \brief This macros tests whether A and B are _NOT_ equal. The equality
- *        oeprator must be defined for A and B, but they need not be the
+ *        operator must be defined for A and B, but they need not be the
  *        same type.
  */
-#define EXPECT_NOT_EQUAL(A,B)               \
-  if (A == B) throw TinyTestException()     \
+#define EXPECT_NOT_EQUAL(A,B)                                         \
+  if (A == B) {                                                       \
+    std::stringstream ss;                                             \
+    ss << "EXPECT_NOT_EQUAL failed on comparison of "                 \
+       << A << " and " << B;                                          \
+    throw TinyTestException(ss.str());                                \
+  }
 
 /**
  * \brief This macro tests whether A and B are _almost_ equal. The
