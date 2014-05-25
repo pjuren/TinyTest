@@ -39,6 +39,13 @@
 #include <cmath>
 
 /******************************************************************************
+ **                               CONSTANTS                                  **
+ *****************************************************************************/
+ namespace TinyTest {
+   static const double DEF_TOLERANCE = 1e-20;
+ }
+
+/******************************************************************************
  **                            HELPER FUNCTIONS                              **
  ******************************************************************************/
 namespace TinyTest {
@@ -187,7 +194,13 @@ private:
  *        1e-20 is allowed. Basically, this is for floating point numbers.
  */
 #define EXPECT_NEAR_DEF(A,B)                                          \
-  if (std::fabs(A - B) > 1e-20) throw TinyTestException()             \
+  if (std::fabs(A - B) > TinyTest::DEF_TOLERANCE) {                   \
+    std::stringstream ss;                                             \
+    ss << "EXPECT_NEAR_DEF failed on comparison of "                  \
+       << A << " and " << B                                           \
+       << " with tolerance of " << TinyTest::DEF_TOLERANCE;           \
+    throw TinyTestException(ss.str());                                \
+  }
 
 /******************************************************************************
  **       Classes for definition, and automagic detection of test cases      **
