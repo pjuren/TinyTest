@@ -35,6 +35,39 @@
 using std::cerr;
 using std::endl;
 
+/******************************************************************************
+ **                     HHELPER FUNCTIONS AND CLASSES                        **
+ ******************************************************************************/
+
+/**
+ * \brief An example exception that is thrown in some tests to check that
+ *        exception handling macros are working properly.
+ */
+class SampleException : public std::exception {};
+
+/**
+ * \brief A function that throws an exception; used for testing whether
+ *        exception handling macros are working properly.
+ */
+static void
+exceptionThrower(size_t x, size_t y) {
+  throw SampleException();
+}
+
+/**
+ * \brief A function that does not throw an exception; used for testing whether
+ *        exception handling macros are working properly.
+ */
+static size_t
+exceptionAvoider(size_t x, size_t y) {
+  return x * y;
+}
+
+
+/******************************************************************************
+ **                                 TESTS                                    **
+ ******************************************************************************/
+
 /**
  * \brief Test that the equality macro produces a pass in a simple situation
  *        where it should.
@@ -186,3 +219,20 @@ TEST(testContainerNearFail) {
   one.push_back(6.0); two.push_back(5.991);
   EXPECT_NEAR_STL_CONTAINER(one, two, 0.001)
 }
+
+/**
+ * \brief Test the EXPECT_THROWS macro by calling a function that throws a
+ *        SampleException and make sure the macros correctly recognises it.
+ */
+TEST(testThrowsExceptionPass) {
+  EXPECT_THROWS(SampleException, exceptionThrower(5, 6));
+}
+
+/**
+ * \brief Test that the EXPECT_THROWS macro correctly fails when calling a
+ *        function that does not throw any exception.
+ */
+TEST(testThrowsExceptionFail) {
+  EXPECT_THROWS(SampleException, exceptionAvoider(5,6));
+}
+

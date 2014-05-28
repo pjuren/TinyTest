@@ -211,6 +211,26 @@ private:
     throw TinyTestException(ss.str());                                \
   }
 
+/**
+ * \brief This macros tests whether the exception type EXCEPTION is thrown
+ *        when the function FUNC is run with the arguments ARGS. Note that
+ *        ARGS can be more than one argument.
+ */
+#define EXPECT_THROWS(EXCEPTION, FUNC)                                \
+  bool thrown = false;                                                \
+  try {                                                               \
+    FUNC;                                                             \
+  } catch (EXCEPTION &e) {                                            \
+    thrown= true;                                                     \
+  }                                                                   \
+  if (!thrown) {                                                      \
+    std::stringstream ss;                                             \
+    ss << "EXPECT_THROWS failed when running " << #FUNC << ". "       \
+       << #EXCEPTION << " was not thrown";                            \
+    throw TinyTestException(ss.str());                                \
+  }
+
+
 /******************************************************************************
  **       Classes for definition, and automagic detection of test cases      **
  ******************************************************************************/

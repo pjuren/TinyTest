@@ -11,6 +11,8 @@ Discovered test: testContainerEqualFail
 Discovered test: testContainerEqualFail2
 Discovered test: testContainerNearPass
 Discovered test: testContainerNearFail
+Discovered test: testThrowsExceptionPass
+Discovered test: testThrowsExceptionFail
 RUNNING UNIT TESTS
 testEqualityMacroSuccess ...   [PASSED]
 testInequalityMacroSuccess ... [PASSED]
@@ -25,3 +27,5 @@ testContainerEqualFail ...     [FAILED] [Reason: EXPECT_EQUAL_STL_CONTAINER fail
 testContainerEqualFail2 ...    [FAILED] [Reason: EXPECT_EQUAL_STL_CONTAINER failed on comparison of 2 and 6. Full container contents: 1, 3, 2 and 1, 3, 6]
 testContainerNearPass ...      [PASSED]
 testContainerNearFail ...      [FAILED] [Reason: EXPECT_NEAR_STL_CONTAINER failed on comparison of 6 and 5.991 with tolerance of 0.001. Full container contents: 1, 3, 2, 6 and 1.001, 2.999, 2, 5.991]
+testThrowsExceptionPass ...    [PASSED]
+testThrowsExceptionFail ...    [FAILED] [Reason: EXPECT_THROWS failed when running exceptionAvoider(5,6). SampleException was not thrown]
