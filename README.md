@@ -89,6 +89,14 @@ are 'near equal' if they contain the same number of items and the difference
 between pairwise elements (evaluated by the - operator) is within the specified
 tolerance.
 
+**EXPECT_THROWS(EXCEPTION, FUNC)**      Test whether a call to FUNC causes the 
+                                        exception type EXCEPTION to be throw 
+(in which case the test passes, otherwise it fails). Note that the call to FUNC
+can include parameters -- it will be evaluated after macro expansion, not 
+before. For example, if if exceptionThrower throws a SampleException when called
+with the arguments 5 and 6, the following code will pass:  
+EXPECT_THROWS(SampleException, exceptionThrower(5,6));
+
 How do I use TinyTest?
 ----------------------
 
