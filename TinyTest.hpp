@@ -96,7 +96,8 @@ private:
   if (A != B) {                                                       \
     std::stringstream ss;                                             \
     ss << "EXPECT_EQUAL failed on comparison of "                     \
-       << A << " and " << B;                                          \
+       << A << " and " << B << " on line " << __LINE__ << " of "      \
+       << __FILE__;                                                   \
     throw TinyTestException(ss.str());                                \
   }
 
