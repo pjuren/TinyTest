@@ -5,7 +5,7 @@ language: cpp
 compiler:
   - gcc
   - clang
-script: make 
+script: make; make test; make distcheck 
 env:
   global:
     - secure: "jqCm10MVMt+OrvxN7ZTNfOZTCcGA9egrUf8UlLlhhv7IiAP6fbxbJP2Hwr0sCn0etDKPjd5I5+DZcHoX/D4LTkg9Chc2O74cFEelgkjd8cDd4T8ztLb3APjVw/xGDdw/ZLFZcusqZnsI8JV69FSGmUo44keX6ZzajQT4mmdXJvo="

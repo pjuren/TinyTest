@@ -16,6 +16,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
+PACKAGE = TinyTest
+VERSION = 0.1.0b
+TARNAME = $(PACKAGE)
+DISTDIR = $(TARNAME)-$(VERSION)
+
 CXX = g++
 CFLAGS = -g -Wall -fPIC -fmessage-length=50
 OPTFLAGS = -O3
@@ -60,3 +65,40 @@ clean:
 	@-rm -f TestTinyTest *.o *.so *.a *~
 	@-rm -rf *.dSYM
 .PHONY: clean
+
+distclean: clean
+	@rm -rf $(DISTDIR) $(DISTDIR).tar.gz
+.PHONY: distclean
+
+dist: $(DISTDIR).tar.gz
+
+distcheck : $(DISTDIR).tar.gz
+	gzip -cd $(DISTDIR).tar.gz | tar xvf -
+	cd $(DISTDIR) && $(MAKE) test
+	cd $(DISTDIR) && $(MAKE) clean
+	rm -rf $(DISTDIR)
+	@echo "*** Package $(DISTDIR).tar.gz is ready for distribution"
+
+$(DISTDIR).tar.gz : $(DISTDIR)
+	tar chof - $(DISTDIR) | gzip -9 -c > $@
+	rm -rf $(DISTDIR)
+
+$(DISTDIR) : FORCE
+	# make the directory structure 
+	mkdir -p $(DISTDIR)
+	# copy files for distribution
+	cp Makefile $(DISTDIR)
+	cp README.md $(DISTDIR)
+	cp LICENSE $(DISTDIR)
+	cp doxygen.config $(DISTDIR) 
+	cp regressionTestExpectedOutput.txt $(DISTDIR) 
+	cp TinyTest.cpp $(DISTDIR)
+	cp TinyTest.hpp $(DISTDIR)
+	cp TestTinyTest.cpp $(DISTDIR)	
+.PHONY: dist
+
+FORCE:
+	-rm $(DISTDIR).tar.gz > /dev/null 2>&1
+	-rm -rf $(DISTDIR) > /dev/null 2>&1
+.PHONY: FORCE
+
