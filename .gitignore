@@ -29,3 +29,5 @@ TestTinyTest
 # the development documentation
 /developmentDocs
 
+# tarballs -- distribution archives
+*.tar.gz
