@@ -305,11 +305,23 @@ public:
       try {
         tests[i]->runTest();
         std::cout << "[PASSED]" << std::endl;
-      } catch (TinyTestException e) {
+      } catch (const TinyTestException &e) {
         if (std::string(e.what()).empty())
           std::cout << "[FAILED] [Reason: UNKNOWN]" << std::endl;
         else
           std::cout << "[FAILED] [Reason: " << e.what() << "]" << std::endl;
+        okay = false;
+      } catch (const std::exception& ex) {
+        if (std::string(ex.what()).empty())
+          std::cout << "[FAILED] [Reason: An unexpected exception was thrown "
+                    << "-- no further details]" << std::endl;
+        else
+          std::cout << "[FAILED] [Reason: An unexpected exception was thrown "
+                    << "details: " << ex.what() << "]" << std::endl;
+        okay = false;
+      } catch (...) {
+        std::cout << "[FAILED] [Reason: An unexpected exception was thrown "
+                  << "-- no further details]" << std::endl;
         okay = false;
       }
     }

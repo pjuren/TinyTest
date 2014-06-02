@@ -236,3 +236,10 @@ TEST(testThrowsExceptionFail) {
   EXPECT_THROWS(SampleException, exceptionAvoider(5,6));
 }
 
+/**
+ * \brief Test that an unexpected exception causes the test to fail, rather
+ *        than the program to crash.
+ */
+TEST(testUnxpctdExceptionFail) {
+  exceptionThrower(5, 6);
+}
