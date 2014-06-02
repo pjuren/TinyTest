@@ -1,5 +1,5 @@
-TinyTest V0.1b
-==============
+TinyTest V1.0.0
+===============
 
 What is TinyTest?
 -----------------
