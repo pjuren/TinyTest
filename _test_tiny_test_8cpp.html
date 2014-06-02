@@ -76,6 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">TestTinyTest.cpp File Reference</div>  </div>
@@ -88,8 +89,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;iostream&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
 </div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sample_exception.html">SampleException</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An example exception that is thrown in some tests to check that exception handling macros are working properly.  <a href="class_sample_exception.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fac5c6af81ff7fe10c24412c61a21df"></a><!-- doxytag: member="TestTinyTest.cpp::exceptionThrower" ref="a2fac5c6af81ff7fe10c24412c61a21df" args="(size_t x, size_t y)" -->
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a2fac5c6af81ff7fe10c24412c61a21df">exceptionThrower</a> (size_t x, size_t y)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A function that throws an exception; used for testing whether exception handling macros are working properly. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a197665e3a58fe33aafee21cb0087406a"></a><!-- doxytag: member="TestTinyTest.cpp::exceptionAvoider" ref="a197665e3a58fe33aafee21cb0087406a" args="(size_t x, size_t y)" -->
+static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a197665e3a58fe33aafee21cb0087406a">exceptionAvoider</a> (size_t x, size_t y)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A function that does not throw an exception; used for testing whether exception handling macros are working properly. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0fee1b20522915a0814acf09bf5e292"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="ab0fee1b20522915a0814acf09bf5e292" args="(testEqualityMacroSuccess)" -->
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#ab0fee1b20522915a0814acf09bf5e292">TEST</a> (testEqualityMacroSuccess)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test that the equality macro produces a pass in a simple situation where it should. <br/></td></tr>
@@ -129,6 +140,15 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31ccdc34f8417d5ca707002a52581024"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="a31ccdc34f8417d5ca707002a52581024" args="(testContainerNearFail)" -->
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a31ccdc34f8417d5ca707002a52581024">TEST</a> (testContainerNearFail)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test the container 'near equal' macro fails with two vectors of doubles that are close to equal, but don't meet the tolerance threshold. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8521c052b123cf7b3247634ed6a8379e"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="a8521c052b123cf7b3247634ed6a8379e" args="(testThrowsExceptionPass)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a8521c052b123cf7b3247634ed6a8379e">TEST</a> (testThrowsExceptionPass)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test the EXPECT_THROWS macro by calling a function that throws a <a class="el" href="class_sample_exception.html" title="An example exception that is thrown in some tests to check that exception handling macros are working...">SampleException</a> and make sure the macros correctly recognises it. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05cea9ba1b29b3cb2a7e84bfbaa97cc0"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="a05cea9ba1b29b3cb2a7e84bfbaa97cc0" args="(testThrowsExceptionFail)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a05cea9ba1b29b3cb2a7e84bfbaa97cc0">TEST</a> (testThrowsExceptionFail)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test that the EXPECT_THROWS macro correctly fails when calling a function that does not throw any exception. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a005a68fad25c34a36a55b4a58bb12554"></a><!-- doxytag: member="TestTinyTest.cpp::TEST" ref="a005a68fad25c34a36a55b4a58bb12554" args="(testUnxpctdExceptionFail)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_test_tiny_test_8cpp.html#a005a68fad25c34a36a55b4a58bb12554">TEST</a> (testUnxpctdExceptionFail)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test that an unexpected exception causes the test to fail, rather than the program to crash. <br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file defines a set of standard tests to run on the comparison macros that come with TinyTest, some of which are expected to succeed and some of which are expected to fail. The results can be compared against the file regressionTestExpectedOutput.txt using diff; this is a rudimentary regression test and is implemented in the included make file as the target 'test'. </p>
@@ -157,7 +177,7 @@ Copyright Details</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 25 2014 02:12:03 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 2 2014 03:03:57 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

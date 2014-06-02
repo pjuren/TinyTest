@@ -5,5 +5,6 @@ var searchData=
   ['expect_5fnear',['EXPECT_NEAR',['../_tiny_test_8hpp.html#adbe3b51bf14b9ed6b3a71c1dfc54d07e',1,'TinyTest.hpp']]],
   ['expect_5fnear_5fdef',['EXPECT_NEAR_DEF',['../_tiny_test_8hpp.html#a085d4cd46707bbe5680a243d96bc8bce',1,'TinyTest.hpp']]],
   ['expect_5fnear_5fstl_5fcontainer',['EXPECT_NEAR_STL_CONTAINER',['../_tiny_test_8hpp.html#a5d109af02a7508cb9521a52b864db7c6',1,'TinyTest.hpp']]],
-  ['expect_5fnot_5fequal',['EXPECT_NOT_EQUAL',['../_tiny_test_8hpp.html#a16e4cb037161beddc807347a12cd3d8a',1,'TinyTest.hpp']]]
+  ['expect_5fnot_5fequal',['EXPECT_NOT_EQUAL',['../_tiny_test_8hpp.html#a16e4cb037161beddc807347a12cd3d8a',1,'TinyTest.hpp']]],
+  ['expect_5fthrows',['EXPECT_THROWS',['../_tiny_test_8hpp.html#af85758890c99b9f04bf217dde6c5cd69',1,'TinyTest.hpp']]]
 ];
