@@ -442,7 +442,8 @@ Copyright Details</h2>
   }                                                                   \
   if (!thrown) {                                                      \
     std::stringstream ss;                                             \
-    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_THROWS failed when running &quot;</span> &lt;&lt; #FUNC &lt;&lt; <span class="stringliteral">&quot;. &quot;</span>       \
+    ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_THROWS failed when running &quot;</span> &lt;&lt; #FUNC               \
+       &lt;&lt; <span class="stringliteral">&quot; on line &quot;</span> &lt;&lt; __LINE__ &lt;&lt; <span class="stringliteral">&quot; of &quot;</span> &lt;&lt; __FILE__&lt;&lt; <span class="stringliteral">&quot;; &quot;</span>        \
        &lt;&lt; #EXCEPTION &lt;&lt; <span class="stringliteral">&quot; was not thrown&quot;</span>;                            \
     throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                                \
   }
@@ -497,7 +498,7 @@ Copyright Details</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 6 2014 02:04:07 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 6 2014 02:05:12 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
