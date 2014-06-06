@@ -156,8 +156,9 @@ private:
     std::stringstream ss;                                             \
     ss << "EXPECT_NEAR_STL_CONTAINER failed on "                      \
        << "comparison of " << TinyTest::vecToString(A)                \
-       << " and " <<  TinyTest::vecToString(B) << ". "                \
-       << "Unequal sizes.";                                           \
+       << " and " <<  TinyTest::vecToString(B) << " on line "         \
+       << __LINE__ << " of " << __FILE__ "; "                         \
+       << "Containers have unequal sizes.";                           \
     throw TinyTestException(ss.str());                                \
   }                                                                   \
   for (size_t i = 0; i < A.size(); ++i) {                             \
@@ -166,7 +167,8 @@ private:
       ss << "EXPECT_NEAR_STL_CONTAINER failed on "                    \
          << "comparison of " << A[i]                                  \
          << " and " << B[i] << " with tolerance of "                  \
-         << TOL << ". Full container "                                \
+         << TOL << " on line " << __LINE__ << " of "                  \
+         << __FILE__". Full container "                               \
          << "contents: " << TinyTest::vecToString(A)                  \
          << " and " << TinyTest::vecToString(B);                      \
       throw TinyTestException(ss.str());                              \
