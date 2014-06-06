@@ -268,7 +268,8 @@ Copyright Details</h2>
     std::stringstream ss;                                             \
     ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_NEAR failed on comparison of &quot;</span>                      \
        &lt;&lt; A &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B                                           \
-       &lt;&lt; <span class="stringliteral">&quot; with tolerance of &quot;</span> &lt;&lt; TOL;                               \
+       &lt;&lt; <span class="stringliteral">&quot; with tolerance of &quot;</span> &lt;&lt; TOL                                \
+       &lt;&lt; <span class="stringliteral">&quot; on line &quot;</span> &lt;&lt; __LINE__ &lt;&lt; <span class="stringliteral">&quot; of &quot;</span> &lt;&lt; __FILE__;              \
     throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                                \
   }
 </pre></div>
@@ -304,7 +305,9 @@ Copyright Details</h2>
     std::stringstream ss;                                             \
     ss &lt;&lt; <span class="stringliteral">&quot;EXPECT_NEAR_DEF failed on comparison of &quot;</span>                  \
        &lt;&lt; A &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B                                           \
-       &lt;&lt; <span class="stringliteral">&quot; with tolerance of &quot;</span> &lt;&lt; TinyTest::DEF_TOLERANCE;           \
+       &lt;&lt; <span class="stringliteral">&quot; with tolerance of &quot;</span> &lt;&lt; TinyTest::DEF_TOLERANCE            \
+       &lt;&lt; <span class="stringliteral">&quot; on line &quot;</span> &lt;&lt; __LINE__ &lt;&lt; <span class="stringliteral">&quot; of &quot;</span>                           \
+       &lt;&lt; __FILE__;                                                   \
     throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                                \
   }
 </pre></div>
@@ -358,7 +361,7 @@ Copyright Details</h2>
          &lt;&lt; <span class="stringliteral">&quot;comparison of &quot;</span> &lt;&lt; A[i]                                  \
          &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; B[i] &lt;&lt; <span class="stringliteral">&quot; with tolerance of &quot;</span>                  \
          &lt;&lt; TOL &lt;&lt; <span class="stringliteral">&quot; on line &quot;</span> &lt;&lt; __LINE__ &lt;&lt; <span class="stringliteral">&quot; of &quot;</span>                  \
-         &lt;&lt; __FILE__<span class="stringliteral">&quot;. Full container &quot;</span>                               \
+         &lt;&lt; __FILE__ &lt;&lt; <span class="stringliteral">&quot;. Full container &quot;</span>                           \
          &lt;&lt; <span class="stringliteral">&quot;contents: &quot;</span> &lt;&lt; TinyTest::vecToString(A)                  \
          &lt;&lt; <span class="stringliteral">&quot; and &quot;</span> &lt;&lt; TinyTest::vecToString(B);                      \
       throw <a class="code" href="class_tiny_test_exception.html" title="Exceptions of this type are thrown whenever a test fails.">TinyTestException</a>(ss.str());                              \
@@ -494,7 +497,7 @@ Copyright Details</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 6 2014 01:51:16 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 6 2014 02:03:52 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
