@@ -234,7 +234,8 @@ private:
   }                                                                   \
   if (!thrown) {                                                      \
     std::stringstream ss;                                             \
-    ss << "EXPECT_THROWS failed when running " << #FUNC << ". "       \
+    ss << "EXPECT_THROWS failed when running " << #FUNC               \
+       << " on line " << __LINE__ << " of " << __FILE__<< "; "        \
        << #EXCEPTION << " was not thrown";                            \
     throw TinyTestException(ss.str());                                \
   }
