@@ -168,7 +168,7 @@ private:
          << "comparison of " << A[i]                                  \
          << " and " << B[i] << " with tolerance of "                  \
          << TOL << " on line " << __LINE__ << " of "                  \
-         << __FILE__". Full container "                               \
+         << __FILE__ << ". Full container "                           \
          << "contents: " << TinyTest::vecToString(A)                  \
          << " and " << TinyTest::vecToString(B);                      \
       throw TinyTestException(ss.str());                              \
@@ -199,7 +199,8 @@ private:
     std::stringstream ss;                                             \
     ss << "EXPECT_NEAR failed on comparison of "                      \
        << A << " and " << B                                           \
-       << " with tolerance of " << TOL;                               \
+       << " with tolerance of " << TOL                                \
+       << " on line " << __LINE__ << " of " << __FILE__;              \
     throw TinyTestException(ss.str());                                \
   }
 
