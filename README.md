@@ -110,7 +110,7 @@ this (in myTests.cpp):
     TEST(myTest) {
       // whatever code you need here for your test
 
-      // check the compute values match what you expect
+      // check the computed values match what you expected
       EXPECT_EQUAL(1,1);
       EXPECT_NOT_EQUAL(0,1);
     }
