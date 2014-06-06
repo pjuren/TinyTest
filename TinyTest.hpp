@@ -213,7 +213,9 @@ private:
     std::stringstream ss;                                             \
     ss << "EXPECT_NEAR_DEF failed on comparison of "                  \
        << A << " and " << B                                           \
-       << " with tolerance of " << TinyTest::DEF_TOLERANCE;           \
+       << " with tolerance of " << TinyTest::DEF_TOLERANCE            \
+       << " on line " << __LINE__ << " of "                           \
+       << __FILE__;                                                   \
     throw TinyTestException(ss.str());                                \
   }
 
