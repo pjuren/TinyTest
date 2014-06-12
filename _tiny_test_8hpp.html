@@ -127,9 +127,10 @@ Defines</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the macro that users will employ to define their tests. Each test they define is a sub-class of <a class="el" href="class_test_case.html" title="This class is the base test case class. User defined test cases will extend this class (though they w...">TestCase</a>. We use a little trick here to do automatic test registration. The class has a static member of <a class="el" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a>, which we initialise when the macro is expanded, passing to it an object constructed from the newly defined test case class. The <a class="el" href="class_test_case_adder.html" title="This is a helper class that facilitates automatic registration of tests. When one of these is constru...">TestCaseAdder</a> then just registers this object with a static test set maintained by the <a class="el" href="class_test_set.html" title="This class defines a Test Set, which is really just a collection of test cases. Uses the factory patt...">TestSet</a> class.  <a href="#a3a8dd86e1cab36109f7149282150152d"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="a95f4d20d1076552169720531b26407cb"></a><!-- doxytag: member="TinyTest.hpp::vecToString" ref="a95f4d20d1076552169720531b26407cb" args="(std::vector&lt; T &gt; t)" -->
+<tr><td class="memTemplParams" colspan="2"><a class="anchor" id="ae12318be49c2eeb46bf521308b780943"></a><!-- doxytag: member="TinyTest.hpp::vecToString" ref="ae12318be49c2eeb46bf521308b780943" args="(T t)" -->
 template&lt;typename T &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><b>TinyTest::vecToString</b> (std::vector&lt; T &gt; t)</td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><b>TinyTest::vecToString</b> (T t)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create a string representation of any random access container of type T. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee58b749326580020cebdbc3206fe732"></a><!-- doxytag: member="TinyTest.hpp::DEF_TOLERANCE" ref="aee58b749326580020cebdbc3206fe732" args="" -->
@@ -498,7 +499,7 @@ Copyright Details</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 6 2014 02:06:55 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 18:45:25 for TinyTest by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
