@@ -31,6 +31,7 @@
 #include "TinyTest.hpp"
 #include <iostream>
 #include <vector>
+#include <deque>
 
 using std::cerr;
 using std::endl;
@@ -154,6 +155,19 @@ TEST(testNearTolFail) {
 TEST(testContainerEqualPass) {
   std::vector<int> one;
   std::vector<int> two;
+  one.push_back(1); two.push_back(1);
+  one.push_back(3); two.push_back(3);
+  one.push_back(2); two.push_back(2);
+  one.push_back(6); two.push_back(6);
+  EXPECT_EQUAL_STL_CONTAINER(one, two);
+}
+
+/**
+ * \brief Test the container equality macro on two deques of int.
+ */
+TEST(testContainerEqualPass2) {
+  std::deque<int> one;
+  std::deque<int> two;
   one.push_back(1); two.push_back(1);
   one.push_back(3); two.push_back(3);
   one.push_back(2); two.push_back(2);

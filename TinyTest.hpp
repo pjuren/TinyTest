@@ -49,8 +49,12 @@
  **                            HELPER FUNCTIONS                              **
  ******************************************************************************/
 namespace TinyTest {
+  /**
+   * \brief create a string representation of any random access container
+   *        of type T.
+   */
   template<typename T>
-  std::string vecToString(std::vector<T> t) {
+  std::string vecToString(T t) {
     std::stringstream ss;
     for (size_t i = 0; i < t.size(); ++i) {
       if (i != 0) ss << ", ";
